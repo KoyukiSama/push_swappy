@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ring_buffer_swap.c                                 :+:    :+:            */
+/*   push_swap_operations.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 16:59:53 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 17:53:03 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
+#include "push_swap.h"
 
-int	rb_sa(t_ringbuff *rb_a, t_ringbuff *rb_b)
+int	rb_sa(t_stacks *stx)
 {
 	int	temp;
-	(void) rb_b;
+	t_ringbuff	*rb_a;
 
+	rb_a = &(stx->rb_a);
 	if (rb_isempty(*rb_a) || rb_isone(*rb_a))
 		return (0);
 	temp = rb_get(*rb_a, rb_lasti(*rb_a));
@@ -25,11 +27,12 @@ int	rb_sa(t_ringbuff *rb_a, t_ringbuff *rb_b)
 	return (1);
 }
 
-int	rb_sb(t_ringbuff *rb_a, t_ringbuff *rb_b)
+int	rb_sb(t_stacks *stx)
 {
 	int	temp;
-	(void) rb_a;
+	t_ringbuff	*rb_b;
 
+	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_b) || rb_isone(*rb_b))
 		return (0);
 	temp = rb_get(*rb_b, rb_lasti(*rb_b));
@@ -38,20 +41,25 @@ int	rb_sb(t_ringbuff *rb_a, t_ringbuff *rb_b)
 	return (1);
 }
 
-int	rb_ss(t_ringbuff *rb_a, t_ringbuff *rb_b)
+int	rb_ss(t_stacks *stx)
 {
 	int	pass;
 
 	pass = 1;
-	if (!rb_sa(rb_a, NULL))
+	if (!rb_sa(stx))
 		pass = 0;
-	if (!rb_sa(NULL, rb_b))
+	if (!rb_sb(stx))
 		pass = 0;
 	return (pass);
 }
 
-int	rb_pa(t_ringbuff *rb_a, t_ringbuff *rb_b)
+int	rb_pa(t_stacks *stx)
 {
+	t_ringbuff	*rb_a;
+	t_ringbuff	*rb_b;
+
+	rb_a = &(stx->rb_a);
+	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_b))
 		return (0);
 	rb_addtop(rb_a, rb_get(*rb_b, rb_lasti(*rb_b)));
@@ -59,81 +67,18 @@ int	rb_pa(t_ringbuff *rb_a, t_ringbuff *rb_b)
 	return (1);
 }
 
-int	rb_pb(t_ringbuff *rb_a, t_ringbuff *rb_b)
+int	rb_pb(t_stacks *stx)
 {
+	t_ringbuff	*rb_a;
+	t_ringbuff	*rb_b;
+
+	rb_a = &(stx->rb_a);
+	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_a))
 		return (0);
 	rb_addtop(rb_b, rb_get(*rb_a, rb_lasti(*rb_a)));
 	rb_remtop(rb_a);
 	return (1);
-}
-
-int	rb_ra(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	(void) rb_b;
-
-	if (rb_isempty(*rb_a) || rb_isone(*rb_a))
-		return (0);
-	rb_addbot(rb_a, rb_a->buffer[(rb_a->top - 1) & rb_a->mask]);
-	rb_remtop(rb_a);
-	return (1);
-}
-
-int rb_rb(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	(void) rb_a;
-
-	if (rb_isempty(*rb_b) || rb_isone(*rb_b))
-		return (0);
-	rb_addbot(rb_b, rb_b->buffer[(rb_b->top - 1) & rb_b->mask]);
-	rb_remtop(rb_b);
-	return (1);
-}
-
-int rb_rr(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	int	pass;
-
-	pass = 1;
-	if (!rb_ra(rb_a, NULL))
-		pass = 0;
-	if (!rb_rb(NULL, rb_b))
-		pass = 0;
-	return (pass);
-}
-
-int rb_rra(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	(void) rb_b;
-
-	if (rb_isempty(*rb_a) || rb_isone(*rb_a))
-		return (0);
-	rb_addtop(rb_a, rb_get(*rb_a, 0));
-	rb_rembot(rb_a);
-	return (1);
-}
-
-int rb_rrb(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	(void) rb_a;
-
-	if (rb_isempty(*rb_b) || rb_isone(*rb_b))
-		return (0);
-	rb_addtop(rb_b, rb_get(*rb_b, 0));
-	rb_rembot(rb_b);
-	return (1);
-}
-
-int rb_rrr(t_ringbuff *rb_a, t_ringbuff *rb_b)
-{
-	int	pass;
-
-	pass = 1;
-	if (!rb_rra(rb_a, NULL))
-		pass = 0;
-	if (!rb_rrb(NULL, rb_b))
-		pass = 0;
-	return (pass);
 }
 
 #include <stdio.h>
@@ -168,8 +113,10 @@ void print_buff(t_ringbuff *rb_a, t_ringbuff *rb_b)
 
 int main(void)
 {
-	t_ringbuff rb_a = rb_init(8);
-	t_ringbuff rb_b = rb_init(8);
+	t_stacks stacks;
+	
+	stacks.rb_a = rb_init(8);
+	stacks.rb_b = rb_init(8);
 
 	for (size_t i = 0; i < 8; i++)
 	{
@@ -184,20 +131,8 @@ int main(void)
 	rb_addtop(&rb_b, 3);
 	fprintf(stderr, "top: %lu , bot: %lu\n", rb_a.top, rb_a.bot);
 	print_buff(&rb_a, &rb_b);
-	rb_rra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_ra(&rb_a, &rb_b);
-	rb_rra(&rb_a, &rb_b);
-	rb_rr(&rb_a, &rb_b);
+	rb_ss(&rb_a, &rb_b);
+	//rb_sb(&rb_a, &rb_b);
 	
 	fprintf(stderr, "top: %lu , bot: %lu\n", rb_a.top, rb_a.bot);
 	print_buff(&rb_a, &rb_b);

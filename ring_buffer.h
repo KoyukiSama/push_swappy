@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 15:26:38 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 17:39:03 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void		rb_remtop(t_ringbuff *rb);
 void		rb_addbot(t_ringbuff *rb, int nbr);
 void		rb_rembot(t_ringbuff *rb);
 
-// specials
+// operations 
 // all returns success value
 int		rb_sa(t_ringbuff *rb_a, t_ringbuff *rb_b);
 int		rb_sb(t_ringbuff *rb_a, t_ringbuff *rb_b);
 int		rb_ss(t_ringbuff *rb_a, t_ringbuff *rb_b);
+int		rb_pa(t_ringbuff *rb_a, t_ringbuff *rb_b);
 
 // TODO
 // push_start
