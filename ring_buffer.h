@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/12 19:00:09 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 15:26:38 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_ringbuff
 	size_t	bot;
 	size_t	size;
 	size_t	mask;
-	int		*buffer;
+	int 	*buffer;
 }	t_ringbuff;
 
 t_ringbuff	rb_init(size_t memsize);
@@ -49,9 +49,10 @@ void		rb_addbot(t_ringbuff *rb, int nbr);
 void		rb_rembot(t_ringbuff *rb);
 
 // specials
-void		rb_sa(t_ringbuff *rb_a, t_ringbuff *rb_b);
-void		rb_sb(t_ringbuff *rb_a, t_ringbuff *rb_b);
-void		rb_ss(t_ringbuff *rb_a, t_ringbuff *rb_b);
+// all returns success value
+int		rb_sa(t_ringbuff *rb_a, t_ringbuff *rb_b);
+int		rb_sb(t_ringbuff *rb_a, t_ringbuff *rb_b);
+int		rb_ss(t_ringbuff *rb_a, t_ringbuff *rb_b);
 
 // TODO
 // push_start

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:48:29 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/12 18:57:47 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 16:51:21 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 void	rb_set(t_ringbuff *rb, size_t index, int nbr)
 {
-	rb->buffer[index & rb->mask] = nbr;
+	rb->buffer[(index + rb->bot) & rb->mask] = nbr;
 	return ;
 }
 
 int	rb_get(t_ringbuff rb, size_t index)
 {
-	return rb.buffer[index & rb.mask];
+	return (rb.buffer[(index + rb.bot) & rb.mask]);
 }
 
 void	rb_addtop(t_ringbuff *rb, int nbr)
 {
-	rb_set(rb, rb->top, nbr);
+	rb->buffer[rb->top] = nbr;
 	rb->top = (rb->top + 1) & rb->mask;
 }
 

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:48:29 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/12 18:59:39 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 16:57:42 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	rb_addbot(t_ringbuff *rb, int nbr)
 {
 	rb->bot = (rb->bot - 1) & rb->mask;
-	rb_set(rb, rb->bot, nbr);
+	rb_set(rb, 0, nbr);
 }
 
 void	rb_rembot(t_ringbuff *rb)
 {
 	if (rb_isempty(*rb))
 		return ;
-	rb->top = (rb->top + 1) & rb->mask;
+	rb->bot = (rb->bot + 1) & rb->mask;
 }
 
