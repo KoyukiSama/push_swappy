@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:48:29 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 16:57:42 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 18:01:05 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ void	rb_rembot(t_ringbuff *rb)
 		return ;
 	rb->bot = (rb->bot + 1) & rb->mask;
 }
-

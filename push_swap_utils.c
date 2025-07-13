@@ -6,8 +6,25 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 17:49:31 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 18:07:53 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ring_buffer.h"
+#include "push_swap.h"
 
+t_stacks stx_init(size_t size)
+{
+	t_stacks	stx;
+	
+	stx.rb_a = rb_init(size);
+	stx.rb_b = rb_init(size);
+	return (stx);
+}
+
+void	stx_destroy(t_stacks *stx)
+{
+	rb_destroy(stx->rb_a);
+	rb_destroy(stx->rb_b);
+	return ;
+}

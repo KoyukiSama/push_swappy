@@ -6,14 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 17:53:47 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/13 18:11:12 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
 
-int rb_rra(t_stacks *stx)
+int stx_rra(t_stacks *stx)
 {
 	t_ringbuff	*rb_a;
 
@@ -25,7 +25,7 @@ int rb_rra(t_stacks *stx)
 	return (1);
 }
 
-int rb_rrb(t_stacks *stx)
+int stx_rrb(t_stacks *stx)
 {
 	t_ringbuff	*rb_b;
 
@@ -37,7 +37,7 @@ int rb_rrb(t_stacks *stx)
 	return (1);
 }
 
-int rb_rrr(t_stacks *stx)
+int stx_rrr(t_stacks *stx)
 {
 	int	pass;
 
