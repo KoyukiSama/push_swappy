@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 17:07:13 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/18 17:10:29 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	stx_destroy(t_stacks *stx)
 	return ;
 }
 
-void	stx_perror(void)
+int	stx_perror(int error_nbr)
 {
 	write(1, "Error\n", 6);
-	return ;
+	return (error_nbr);
 }
