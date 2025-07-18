@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 16:21:56 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 16:55:50 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/18 17:38:35 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_ringbuff	rb_init(size_t memsize)
 
 void	rb_destroy(t_ringbuff rb)
 {
-	free(rb.buffer);
+	if (rb.buffer)
+		free(rb.buffer);
 	return ;
 }
 
