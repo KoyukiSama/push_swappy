@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_utils.c                                  :+:    :+:            */
+/*   push_swap_manage.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/15 16:32:29 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/18 17:07:13 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
+#include "unistd.h"
 
 t_stacks stx_init(size_t size)
 {
@@ -31,5 +32,11 @@ void	stx_destroy(t_stacks *stx)
 {
 	rb_destroy(stx->rb_a);
 	rb_destroy(stx->rb_b);
+	return ;
+}
+
+void	stx_perror(void)
+{
+	write(1, "Error\n", 6);
 	return ;
 }
