@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 18:10:21 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/18 16:50:18 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ typedef struct s_stacks
 {
 	t_ringbuff	rb_a;
 	t_ringbuff	rb_b;
+	int			error;
 }	t_stacks;
 
 // operations 
@@ -34,7 +35,6 @@ int			stx_rrb(t_stacks *stx);
 int			stx_rrr(t_stacks *stx);
 
 // stx management
-
 t_stacks	stx_init(size_t size);
 void		stx_destroy(t_stacks *stx);
 
