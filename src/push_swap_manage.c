@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 17:58:15 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/19 16:17:26 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void exit_clean(int err_code, t_app *app)
 
 static int	stx_perror(int error_nbr)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	return (error_nbr);
 }
