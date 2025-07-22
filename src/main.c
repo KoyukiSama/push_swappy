@@ -6,13 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:36:51 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 19:23:57 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <push_swap.h>
 
+#include <stdio.h>
 void print_buff(t_ringbuff *rb_a, t_ringbuff *rb_b);
 
 int main(int argc, char *argv[])
@@ -25,8 +26,8 @@ int main(int argc, char *argv[])
 		stx = stx_init_bigstr(argv[1]);
 	else
 		stx = stx_init_smlstr(argv + 1, argc - 1);
-
-		
+	stx_no_dupes(stx);
+printf("int: %i\n", rb_get(stx.rb_a, stx.rb_a.count - 1));
 	print_buff(&(stx.rb_a), &(stx.rb_b));
 	exit_clean(0, &stx);
 }

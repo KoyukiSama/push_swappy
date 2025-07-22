@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:02:08 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 19:40:45 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@
 # define ERR_BIG_STR_FILL_STX 21
 # define ERR_SML_STR_IS_VALID 22
 # define ERR_SML_STR_FILL_STX 23
+# define ERR_NO_DUPES 24
 
 typedef struct s_stacks
 {
 	t_ringbuff	rb_a;
 	t_ringbuff	rb_b;
+	int			min;
+	int			max;
 	int			error;
 }	t_stacks;
 
@@ -57,5 +60,6 @@ void		exit_clean(int err_code, t_stacks *stx);
 // stx parsing
 t_stacks	stx_init_bigstr(const char *str);
 t_stacks	stx_init_smlstr(char **strs, size_t strs_size);
+void		stx_no_dupes(t_stacks stx);
 
 #endif
