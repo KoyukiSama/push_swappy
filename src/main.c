@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 17:59:27 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 18:36:51 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 		stx = stx_init_bigstr(argv[1]);
 	else
 		stx = stx_init_smlstr(argv + 1, argc - 1);
+
+		
 	print_buff(&(stx.rb_a), &(stx.rb_b));
 	exit_clean(0, &stx);
 }

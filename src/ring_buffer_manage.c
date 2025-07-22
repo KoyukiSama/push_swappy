@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 16:21:56 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 17:38:35 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 18:41:20 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ringbuff	rb_init(size_t memsize)
 	rb.mask = rb.size - 1;
 	rb.bot = 0;
 	rb.top = 0;
+	rb.nbrs = 0;
 	rb.buffer = malloc(rb.size * sizeof(int));
 	return (rb);
 }

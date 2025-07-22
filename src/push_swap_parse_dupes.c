@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ring_buffer_modify2.c                              :+:    :+:            */
+/*   push_swap_parse_dupes.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/07/12 17:48:29 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:43:01 by kclaes        ########   odam.nl         */
+/*   Created: 2025/07/22 18:37:40 by kclaes        #+#    #+#                 */
+/*   Updated: 2025/07/22 18:39:03 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ring_buffer.h"
-#include <stddef.h>
+#include <push_swap.h>
 
-void	rb_addbot(t_ringbuff *rb, int nbr)
+void	stx_no_dupes(t_stacks stx)
 {
-	rb->bot = (rb->bot - 1 + rb->size) & rb->mask;
-	rb_set(rb, 0, nbr);
-	rb->nbrs++;
-}
-
-void	rb_rembot(t_ringbuff *rb)
-{
-	if (rb_isempty(*rb))
-		return ;
-	rb->bot = (rb->bot + 1) & rb->mask;
-	rb->nbrs--;
+	while ()
 }
