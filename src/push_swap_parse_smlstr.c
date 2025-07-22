@@ -6,46 +6,58 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/15 15:01:44 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 17:18:36 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 18:02:25 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
-static int	smlstr_is_valid(const char **str);
+static int	smlstr_is_valid(char **strs, size_t strs_size);
+static void	smlstr_fill_stx(char **strs, size_t strs_size, t_stacks *stx);
 
-t_stacks	stx_init_smlstr(const char **str)
+t_stacks	stx_init_smlstr(char **strs, size_t strs_size)
 {
 	size_t		size;
 	t_stacks	stx;
 
-	size = bigstr_is_valid(str);
+	size = smlstr_is_valid(strs, strs_size);
 	stx = stx_init(size);
-	bigstr_fill_stx(str, &stx);
+	smlstr_fill_stx(strs, strs_size, &stx);
 	return (stx);
 }
 
-static int	smlstr_is_valid(const char **str)
+static int	smlstr_is_valid(char **strs, size_t strs_size)
 {
 	size_t	i;
 	size_t	nbr_count;
 
-	if (!ft_isdigit(str[0]))
-		exit_clean(ERR_SML_STR_IS_VALID, NULL);
 	i = 0;
-	nbr_count = 1;
-	while (str[i])
+	nbr_count = 0;
+	while (nbr_count < strs_size)
 	{
-		if (ft_issign(str[i]))
+		if (ft_issign(strs[nbr_count][i]))
 			i++;
-		while (ft_isdigit(str[i]))
+		while (ft_isdigit(strs[nbr_count][i]))
 			i++;
-		if (str[i] == '\0')
-			break ;
-		if (!gap_isvalid(str + i))
-			exit_clean(ERR_BIG_STR_IS_VALID, NULL);
+		if (!(strs[nbr_count][i] == '\0'))
+			exit_clean(ERR_SML_STR_IS_VALID, NULL);
 		nbr_count++;
-		i++;
 	}
 	return (nbr_count);
+}
+
+static void	smlstr_fill_stx(char **strs, size_t strs_size, t_stacks *stx)
+{
+	size_t	i;
+	int		error;
+
+	i = 0;
+	while (i < strs_size)
+	{
+		rb_addbot(&(stx->rb_a), ft_atoi_err(strs[i], &error));
+		if (error)
+			exit_clean(ERR_SML_STR_FILL_STX, stx);
+		i++;
+	}
 }
