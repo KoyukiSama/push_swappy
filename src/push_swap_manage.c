@@ -6,13 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 14:52:40 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 15:42:29 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
-#include "unistd.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 static int	stx_perror(int error_nbr);
 
@@ -45,6 +46,7 @@ void exit_clean(int err_code, t_stacks *stx)
 
 static int	stx_perror(int error_nbr)
 {
-	write(2, "Error\n", 6);
+	if (error_nbr != 0)
+		write(2, "Error\n", 6);
 	return (error_nbr);
 }

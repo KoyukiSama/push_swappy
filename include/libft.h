@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/19 17:28:16 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 15:46:54 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_tolower(int c);
 int		ft_toint(char c);
 char	ft_tochar(int c);
 int		ft_isspace(int c);
+int		ft_issign(char c);
 
 // (ft_mem)
 void	*ft_memset(void *s, int c, size_t n);

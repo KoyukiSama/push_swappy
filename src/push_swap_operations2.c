@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 18:11:12 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 15:12:36 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int stx_rrr(t_stacks *stx)
 	int	pass;
 
 	pass = 1;
-	if (!rb_rra(stx))
+	if (!stx_rra(stx))
 		pass = 0;
-	if (!rb_rrb(stx))
+	if (!stx_rrb(stx))
 		pass = 0;
 	return (pass);
 }
