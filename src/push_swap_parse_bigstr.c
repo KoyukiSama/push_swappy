@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/15 15:01:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 18:04:32 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/19 16:13:12 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	stx_init_bigstr(const char *str, t_app *app)
 
 	size = bigstr_is_valid(str, app);
 	app->stx = stx_init(size, app);
-	bigstr_fill_stx(stx, str);
+	bigstr_fill_stx(str, app);
 }
 
 // returns ammount of nbr, returns 0 if invalid
@@ -64,7 +64,6 @@ static void	bigstr_fill_stx(const char *str, t_app *app)
 	{
 		while (ft_isdigit(str[i]))
 		{
-			
 			i++;
 		}
 	}

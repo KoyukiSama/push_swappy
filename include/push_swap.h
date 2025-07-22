@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/18 17:58:28 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/19 15:27:55 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ring_buffer.h"
 
 // return codes
-//  < 10 STX error
+// < 10 STX error
 # define ERR_STX_INIT 1
 // < 20 PARSE error
 # define ERR_BIG_STR_IS_VALID 10
