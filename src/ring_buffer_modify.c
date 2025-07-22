@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:48:29 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 16:51:21 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 17:38:08 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	rb_remtop(t_ringbuff *rb)
 {
 	if (rb_isempty(*rb))
 		return ;
-	rb->top = (rb->top - 1) & rb->mask;
+	rb->top = (rb->top - 1 + rb->size) & rb->mask;
 }

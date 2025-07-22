@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 15:01:48 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 17:18:30 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 // < 30 PARSE error
 # define ERR_BIG_STR_IS_VALID 20
 # define ERR_BIG_STR_FILL_STX 21
+# define ERR_SML_STR_IS_VALID 22
 
 typedef struct s_stacks
 {
