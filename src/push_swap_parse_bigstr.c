@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/15 15:01:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 17:33:37 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 19:00:30 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	bigstr_is_valid(const char *str)
 	size_t	i;
 	size_t	nbr_count;
 
-	if (!ft_isdigit(str[0]))
+	if (!(ft_isdigit(str[0]) || ft_issign(str[0])))
 		exit_clean(ERR_BIG_STR_IS_VALID, NULL);
 	i = 0;
 	nbr_count = 1;
