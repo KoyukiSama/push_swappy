@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/13 18:09:52 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 18:44:33 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_ringbuff
 {
 	size_t	top;
 	size_t	bot;
+	size_t	count;
 	size_t	size;
 	size_t	mask;
 	int 	*buffer;
