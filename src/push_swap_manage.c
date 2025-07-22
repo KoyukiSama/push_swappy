@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/19 16:17:26 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/22 14:52:40 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 
 static int	stx_perror(int error_nbr);
 
-t_stacks	stx_init(size_t size, t_app *app)
+t_stacks	stx_init(size_t size)
 {
 	t_stacks	stx;
 
 	stx.rb_a = rb_init(size);
 	if (!stx.rb_a.buffer)
-		exit_clean(ERR_STX_INIT, app);
+		exit_clean(ERR_STX_INIT, &stx);
 	stx.rb_b = rb_init(size);
 	if (!stx.rb_b.buffer)
-		exit_clean(ERR_STX_INIT, app);
+		exit_clean(ERR_STX_INIT, &stx);
 	return (stx);
 }
 
@@ -36,10 +36,10 @@ void	stx_destroy(t_stacks *stx)
 	return ;
 }
 
-void exit_clean(int err_code, t_app *app)
+void exit_clean(int err_code, t_stacks *stx)
 {
-	stx_destroy(&(app->stx));
-	strs_destroy((app->strs));
+	if (stx)
+		stx_destroy(stx);
 	exit(stx_perror(err_code));
 }
 
