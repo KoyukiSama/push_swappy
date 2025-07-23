@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 15:41:12 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/23 16:31:19 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	stx_get_rba_high(t_stacks *stx)
 	int		high;
 
 	find_low_high(&low, &high, stx);
+	stx->rba_low = low;
+	stx->rba_high = high;
 	iters_half = stx->rb_a.count / 2;
 	i = 0;
 	while (i < iters_half)

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 19:23:57 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/23 16:10:19 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
 	else
 		stx = stx_init_smlstr(argv + 1, argc - 1);
 	stx_no_dupes(stx);
-printf("int: %i\n", rb_get(stx.rb_a, stx.rb_a.count - 1));
+	stx_sort(&stx);
+	printf("top: %i\n", rb_get(stx.rb_a, stx.rb_a.count - 1));
 	print_buff(&(stx.rb_a), &(stx.rb_b));
 	exit_clean(0, &stx);
 }

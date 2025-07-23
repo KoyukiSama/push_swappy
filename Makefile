@@ -14,7 +14,8 @@ SRC			:= push_swap_manage.c push_swap_operations.c \
 				push_swap_parse_bigstr.c push_swap_parse_smlstr.c \
 				push_swap_parse_dupes.c \
 				ring_buffer_manage.c ring_buffer_manage2.c \
-				ring_buffer_modify.c ring_buffer_modify2.c
+				ring_buffer_modify.c ring_buffer_modify2.c \
+				push_swap_sort_rba_high.c push_swap_sort.c
 
 DIR_OBJ		:= ./obj
 OBJ			:= $(addprefix obj/, $(SRC:.c=.o))

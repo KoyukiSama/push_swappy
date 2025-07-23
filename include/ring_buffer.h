@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:44:33 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/23 16:15:22 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		rb_destroy(t_ringbuff rb);
 int			rb_isempty(t_ringbuff rb);
 int			rb_isone(t_ringbuff rb);
 size_t		rb_lasti(t_ringbuff rb);
+size_t		rb_top_index(t_ringbuff rb);
 
 // modify
 void		rb_set(t_ringbuff *rb, size_t index, int nbr);
@@ -48,6 +49,5 @@ void		rb_addtop(t_ringbuff *rb, int nbr);
 void		rb_remtop(t_ringbuff *rb);
 void		rb_addbot(t_ringbuff *rb, int nbr);
 void		rb_rembot(t_ringbuff *rb);
-
 
 #endif

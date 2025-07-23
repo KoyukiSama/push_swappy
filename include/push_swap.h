@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 19:40:45 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/23 16:30:30 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,34 @@
 # define ERR_SML_STR_FILL_STX 23
 # define ERR_NO_DUPES 24
 
+typedef	struct s_best
+{
+	size_t	index;
+	int		best_a;
+	int		best_b;
+	char	push_to;
+	int		ops_total;
+}	t_best;
+
+typedef struct s_sts
+{
+	size_t	index;
+	int		val;
+	int		ops_a_pos;
+	int		ops_a_neg;
+	int		ops_b_pos;
+	int		ops_b_neg;
+}	t_sts;
+
 typedef struct s_stacks
 {
 	t_ringbuff	rb_a;
 	t_ringbuff	rb_b;
-	int			min;
-	int			max;
+	int			rbb_high;
+	int			rba_high;
+	int			rba_low;
+	t_sts		sts_a;
+	t_sts		sts_b;
 	int			error;
 }	t_stacks;
 
@@ -61,5 +83,9 @@ void		exit_clean(int err_code, t_stacks *stx);
 t_stacks	stx_init_bigstr(const char *str);
 t_stacks	stx_init_smlstr(char **strs, size_t strs_size);
 void		stx_no_dupes(t_stacks stx);
+
+// stx sort
+void		stx_sort(t_stacks *stx);
+void		stx_get_rba_high(t_stacks *stx);
 
 #endif
