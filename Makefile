@@ -38,11 +38,11 @@ $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c
 clean:
 	git submodule update --init --recursive
 	rm -r -f $(DIR_OBJ)
-	@$(MAKE) -C $(DIR_LBFT) clean
+#	@$(MAKE) -C $(DIR_LBFT) clean
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(DIR_LBFT_A)
+#	rm -f $(DIR_LBFT_A)
 
 re: fclean all
 

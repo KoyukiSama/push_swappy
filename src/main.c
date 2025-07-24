@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 15:36:24 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 19:19:32 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < 6; i++)
 		stx_pb(&stx);
 	stx_sort(&stx);
-	printf("top: %i\n", rb_get(stx.rb_a, stx.rb_a.count - 1));
 	print_buff(&(stx.rb_a), &(stx.rb_b));
 	exit_clean(0, &stx);
 }
@@ -48,8 +47,6 @@ void print_buff(t_ringbuff *rb_a, t_ringbuff *rb_b)
 	// fprintf(stderr, " ]\n");
 	if (rb_a)
 	{
-		fprintf(stderr, "size: %lu\n", rb_a->size);
-		fprintf(stderr, "bot: %zu , top: %zu\n", rb_a->bot, rb_a->top);
 		fprintf(stderr, "a: [ ");
 		for (size_t i = rb_a->bot; (i & rb_a->mask) != rb_a->top; i++)
 		{
@@ -59,7 +56,6 @@ void print_buff(t_ringbuff *rb_a, t_ringbuff *rb_b)
 	}
 	if (rb_b)
 	{
-		fprintf(stderr, "bot: %zu , top: %zu\n", rb_b->bot, rb_b->top);
 		fprintf(stderr, "b: [ ");
 		for (size_t i = rb_b->bot; (i & rb_b->mask) != rb_b->top; i++)
 		{

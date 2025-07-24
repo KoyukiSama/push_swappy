@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 15:07:17 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 19:20:46 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ typedef struct s_stacks
 	int			rbb_low;
 	int			rba_high;
 	int			rba_low;
-	t_sts		sts_a;
-	t_sts		sts_b;
+	t_sts		sts;
 	int			error;
 }	t_stacks;
 
