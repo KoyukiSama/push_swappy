@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 17:24:42 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 13:08:53 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,86 +32,4 @@ void	stx_ops_push_from(t_stacks *stx, char stack)
 	}
 	stx->sts_b.ops_b_pos = rb_top_index(stx->rb_b) - stx->sts_b.index;
 	stx->sts_b.ops_b_neg = -stx->sts_b.index - 1;
-}
-
-void	stx_ops_push_to(t_stacks *stx, char stack)
-{
-	size_t	i;
-	int		lowest;
-	int		highest;
-
-	if (stack == 'B')
-	{
-		find_above_below_index_b(&highest, &lowest, stx);
-
-	}
-	find_above_below_index_a(&highest, &lowest, stx);
-}
-
-void	find_above_below_index_a(int *highest, int *lowest, t_stacks *stx)
-{
-	size_t	i;
-	int		curr_nbr;
-
-	*lowest = stx->rba_low;
-	*highest = stx->rba_high;
-	i = 0;
-	while (i < stx->rb_a.count)
-	{
-		curr_nbr = rb_get(stx->rb_a, i);
-		if (curr_nbr >= *lowest && curr_nbr < stx->sts_a.val)
-		{
-			*lowest = curr_nbr;
-		}
-		if (curr_nbr <= *highest && curr_nbr > stx->sts_a.val)
-			*highest = curr_nbr;
-		i++;
-	}
-	find_index_of_nbr(highest, lowest, stx, 'A');
-}
-
-void	find_above_below_index_b(int *highest, int *lowest, t_stacks *stx)
-{
-	size_t	i;
-	int		curr_nbr;
-
-	*lowest = stx->rba_high;
-	*highest = stx->rbb_high;
-	i = 0;
-	while (i < stx->rb_b.count)
-	{
-		curr_nbr = rb_get(stx->rb_b, i);
-		if (curr_nbr > *lowest && curr_nbr < stx->sts_b.val)
-			*lowest = curr_nbr;
-		if (curr_nbr <= *highest && curr_nbr > stx->sts_b.val)
-			*highest = curr_nbr;
-		i++;
-	}
-	find_index_of_nbr(highest, lowest, stx, 'B');
-}
-
-void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char stack)
-{
-	size_t	i;
-
-	if (stack == 'A')
-	{
-		i = 0;
-		while (i < stx->rb_a.count)
-		{
-			if (rb_get(stx->rb_a, i) == *lowest)
-				*lowest = i;
-			if (rb_get(stx->rb_a, i) == *highest)
-				*highest = i;
-		}
-		return ;
-	}	
-	i = 0;
-	while (i < stx->rb_b.count)
-	{
-		if (rb_get(stx->rb_b, i) == *lowest)
-			*lowest = i;
-		if (rb_get(stx->rb_b, i) == *highest)
-			*highest = i;
-	}
 }
