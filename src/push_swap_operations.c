@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 15:12:03 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 14:03:13 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	stx_sa(t_stacks *stx)
 	rb_a = &(stx->rb_a);
 	if (rb_isempty(*rb_a) || rb_isone(*rb_a))
 		return (0);
-	temp = rb_get(*rb_a, rb_lasti(*rb_a));
-	rb_set(rb_a, rb_lasti(*rb_a), rb_get(*rb_a, rb_lasti(*rb_a) - 1));
-	rb_set(rb_a, (rb_lasti(*rb_a) - 1) & rb_a->mask, temp);
+	temp = rb_get(*rb_a, rb_top_index(*rb_a));
+	rb_set(rb_a, rb_top_index(*rb_a), rb_get(*rb_a, rb_top_index(*rb_a) - 1));
+	rb_set(rb_a, (rb_top_index(*rb_a) - 1) & rb_a->mask, temp);
 	return (1);
 }
 
@@ -35,9 +35,9 @@ int	stx_sb(t_stacks *stx)
 	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_b) || rb_isone(*rb_b))
 		return (0);
-	temp = rb_get(*rb_b, rb_lasti(*rb_b));
-	rb_set(rb_b, rb_lasti(*rb_b), rb_get(*rb_b, rb_lasti(*rb_b) - 1));
-	rb_set(rb_b, (rb_lasti(*rb_b) - 1) & rb_b->mask, temp);
+	temp = rb_get(*rb_b, rb_top_index(*rb_b));
+	rb_set(rb_b, rb_top_index(*rb_b), rb_get(*rb_b, rb_top_index(*rb_b) - 1));
+	rb_set(rb_b, (rb_top_index(*rb_b) - 1) & rb_b->mask, temp);
 	return (1);
 }
 
@@ -62,7 +62,7 @@ int	stx_pa(t_stacks *stx)
 	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_b))
 		return (0);
-	rb_addtop(rb_a, rb_get(*rb_b, rb_lasti(*rb_b)));
+	rb_addtop(rb_a, rb_get(*rb_b, rb_top_index(*rb_b)));
 	rb_remtop(rb_b);
 	return (1);
 }
@@ -76,7 +76,7 @@ int	stx_pb(t_stacks *stx)
 	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_a))
 		return (0);
-	rb_addtop(rb_b, rb_get(*rb_a, rb_lasti(*rb_a)));
+	rb_addtop(rb_b, rb_get(*rb_a, rb_top_index(*rb_a)));
 	rb_remtop(rb_a);
 	return (1);
 }
