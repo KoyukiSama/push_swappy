@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 16:10:19 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 15:36:24 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 	else
 		stx = stx_init_smlstr(argv + 1, argc - 1);
 	stx_no_dupes(stx);
+	stx_get_rba_high(&stx);
+	for (int i = 0; i < 6; i++)
+		stx_pb(&stx);
 	stx_sort(&stx);
 	printf("top: %i\n", rb_get(stx.rb_a, stx.rb_a.count - 1));
 	print_buff(&(stx.rb_a), &(stx.rb_b));

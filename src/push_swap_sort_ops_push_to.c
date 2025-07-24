@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 17:26:40 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 15:48:02 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,22 @@
 static void	find_above_below_index_a(int *highest, int *lowest, t_stacks *stx);
 static void	find_above_below_index_b(int *highest, int *lowest, t_stacks *stx);
 
+#include <stdio.h>
 void	stx_ops_push_to(t_stacks *stx, char stack)
 {
-	size_t	i;
 	int		lowest;
 	int		highest;
 
+printf("rba_low: %i, rba_high: %i, rbb_low: %i, rbb_high: %i\n", stx->rba_low, stx->rba_high, stx->rbb_low, stx->rbb_high);
 	if (stack == 'B')
 	{
 		find_above_below_index_b(&highest, &lowest, stx);
-
+		stx->sts_a.ops_b_neg = -highest - 2;
+		stx->sts_a.ops_b_pos = rb_top_index(stx->rb_b) - lowest;
 	}
 	find_above_below_index_a(&highest, &lowest, stx);
+	stx->sts_b.ops_a_neg = -highest - 2;
+	stx->sts_b.ops_a_pos = rb_top_index(stx->rb_a) - lowest;
 }
 
 static void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char stack);
@@ -43,15 +47,15 @@ static void	find_above_below_index_a(int *highest, int *lowest, t_stacks *stx)
 	{
 		curr_nbr = rb_get(stx->rb_a, i);
 		if (curr_nbr >= *lowest && curr_nbr < stx->sts_a.val)
-		{
 			*lowest = curr_nbr;
-		}
 		if (curr_nbr <= *highest && curr_nbr > stx->sts_a.val)
 			*highest = curr_nbr;
 		i++;
 	}
 	find_index_of_nbr(highest, lowest, stx, 'A');
 }
+
+static void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char stack);
 
 static void	find_above_below_index_b(int *highest, int *lowest, t_stacks *stx)
 {
@@ -86,6 +90,7 @@ static void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char sta
 				*lowest = i;
 			if (rb_get(stx->rb_a, i) == *highest)
 				*highest = i;
+			i++;
 		}
 		return ;
 	}	
@@ -96,5 +101,6 @@ static void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char sta
 			*lowest = i;
 		if (rb_get(stx->rb_b, i) == *highest)
 			*highest = i;
+		i++;
 	}
 }

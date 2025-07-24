@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/22 16:57:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 16:15:22 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 13:58:58 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_ringbuff	rb_init(size_t memsize);
 void		rb_destroy(t_ringbuff rb);
 int			rb_isempty(t_ringbuff rb);
 int			rb_isone(t_ringbuff rb);
-size_t		rb_lasti(t_ringbuff rb);
 size_t		rb_top_index(t_ringbuff rb);
 
 // modify

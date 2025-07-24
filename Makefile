@@ -15,18 +15,20 @@ SRC			:= push_swap_manage.c push_swap_operations.c \
 				push_swap_parse_dupes.c \
 				ring_buffer_manage.c ring_buffer_manage2.c \
 				ring_buffer_modify.c ring_buffer_modify2.c \
-				push_swap_sort_rba_high.c push_swap_sort.c
+				push_swap_sort_rba_high.c push_swap_sort.c \
+				push_swap_sort_ops_push_from.c push_swap_sort_ops_push_to.c
 
 DIR_OBJ		:= ./obj
 OBJ			:= $(addprefix obj/, $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(DIR_MLX_A) $(DIR_LBFT_A) $(OBJ)
+$(NAME): $(DIR_LBFT_A) $(OBJ)
 	$(CC) $(CFLAGS) $(DFLAGS) $(INCLUDE) $(OBJ) $(MAIN) \
 		$(DIR_LBFT)/libft.a -o $(NAME)
 
 $(DIR_LBFT_A):
+	git submodule update --init --recursive
 	@$(MAKE) -C $(DIR_LBFT)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c
@@ -34,6 +36,7 @@ $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
+	git submodule update --init --recursive
 	rm -r -f $(DIR_OBJ)
 	@$(MAKE) -C $(DIR_LBFT) clean
 

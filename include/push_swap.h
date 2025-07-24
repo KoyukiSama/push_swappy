@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 16:30:30 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 15:07:17 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@
 typedef	struct s_best
 {
 	size_t	index;
-	int		best_a;
-	int		best_b;
+	size_t	best_a;
+	size_t	best_b;
 	char	push_to;
-	int		ops_total;
+	size_t	ops_total;
 }	t_best;
 
 typedef struct s_sts
 {
 	size_t	index;
 	int		val;
-	int		ops_a_pos;
-	int		ops_a_neg;
-	int		ops_b_pos;
-	int		ops_b_neg;
+	size_t	ops_a_pos;
+	size_t	ops_a_neg;
+	size_t	ops_b_pos;
+	size_t	ops_b_neg;
 }	t_sts;
 
 typedef struct s_stacks
@@ -52,6 +52,7 @@ typedef struct s_stacks
 	t_ringbuff	rb_a;
 	t_ringbuff	rb_b;
 	int			rbb_high;
+	int			rbb_low;
 	int			rba_high;
 	int			rba_low;
 	t_sts		sts_a;
@@ -87,5 +88,7 @@ void		stx_no_dupes(t_stacks stx);
 // stx sort
 void		stx_sort(t_stacks *stx);
 void		stx_get_rba_high(t_stacks *stx);
+void		stx_ops_push_to(t_stacks *stx, char stack);
+void		stx_ops_push_from(t_stacks *stx, char stack);
 
 #endif

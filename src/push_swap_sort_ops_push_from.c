@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ring_buffer_manage2.c                              :+:    :+:            */
+/*   push_swap_sort_ops_push_from.c                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/07/12 17:42:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 13:59:52 by kclaes        ########   odam.nl         */
+/*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
+/*   Updated: 2025/07/24 13:27:55 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ring_buffer.h"
-#include <stddef.h>
+#include "push_swap.h"
 
-size_t	rb_top_index(t_ringbuff rb)
+void	stx_ops_push_from(t_stacks *stx, char stack)
 {
-	return (rb.count - 1);
+	if (stack == 'A')
+	{
+		stx->sts_a.ops_a_pos = rb_top_index(stx->rb_a) - stx->sts_a.index;
+		stx->sts_a.ops_a_neg = -stx->sts_a.index - 1;
+		return ;
+	}
+	stx->sts_b.ops_b_pos = rb_top_index(stx->rb_b) - stx->sts_b.index;
+	stx->sts_b.ops_b_neg = -stx->sts_b.index - 1;
 }
-
