@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/23 16:31:19 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/24 15:39:19 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	find_next_low_high(int *low, int *high, t_stacks *stx);
 static void	find_low_high(int *low, int *high, t_stacks *stx);
+static void	find_next_low(int *low, t_stacks *stx);
 
 void	stx_get_rba_high(t_stacks *stx)
 {
@@ -25,6 +26,7 @@ void	stx_get_rba_high(t_stacks *stx)
 	find_low_high(&low, &high, stx);
 	stx->rba_low = low;
 	stx->rba_high = high;
+	stx->rbb_high = high;
 	iters_half = stx->rb_a.count / 2;
 	i = 0;
 	while (i < iters_half)
@@ -32,7 +34,9 @@ void	stx_get_rba_high(t_stacks *stx)
 		find_next_low_high(&low, &high, stx);
 		i++;
 	}
-	stx->rba_high = low;
+	stx->rbb_low = high;
+	find_next_low(&high, stx);
+	stx->rba_high = high;
 }
 
 static void	find_low_high(int *low, int *high, t_stacks *stx)
@@ -72,3 +76,20 @@ static void	find_next_low_high(int *low, int *high, t_stacks *stx)
 	*low = new_low;
 	*high = new_high;
 }
+
+static void	find_next_low(int *low, t_stacks *stx)
+{
+	size_t	i;
+	int		new_low;
+
+	new_low = stx->rba_low;
+	i = 0;
+	while (i < stx->rb_a.count)
+	{
+		if (rb_get(stx->rb_a, i) >= new_low && rb_get(stx->rb_a, i) < *low)
+			new_low = rb_get(stx->rb_a, i);
+		i++;
+	}
+	*low = new_low;
+}
+
