@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ring_buffer_manage2.c                              :+:    :+:            */
+/*   push_swap_sort_init_pushvals.c                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/07/12 17:42:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 14:07:12 by kclaes        ########   odam.nl         */
+/*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
+/*   Updated: 2025/07/25 14:19:30 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ring_buffer.h"
-#include <stddef.h>
+#include "push_swap.h"
 
-size_t	rb_top_index(t_ringbuff rb)
+// returns ops
+int	stx_init_pb(t_stacks *stx)
 {
-	return (rb.count - 1);
-}
+	size_t	i;
+	size_t	count;
+	int		curr_top;
+	size_t	ops;
 
-int		rb_get_top(t_ringbuff rb)
-{
-	return (rb_get(rb, rb_top_index));
+	i = 0;
+	ops = 0;
+	count = stx->rb_a.count;
+	while (i < count)
+	{
+		curr_top = rb_get_top(stx->rb_a);
+		if (curr_top >= stx->rba_low && curr_top <= stx->rba_high)
+			ops += stx_pb(stx);
+		i++;
+	}
+	return (ops);
 }

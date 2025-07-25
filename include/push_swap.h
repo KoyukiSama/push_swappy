@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 13:55:09 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/25 17:09:54 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 
 typedef	struct s_best
 {
-	size_t	index;
-	size_t	best_a;
-	size_t	best_b;
+	long	ops_a;
+	long	ops_b;
+	size_t	ops_total;
 	char	push_from;
 	size_t	ra;
 	size_t	rb;
@@ -40,18 +40,25 @@ typedef	struct s_best
 	size_t	rra;
 	size_t	rrb;
 	size_t	rrr;
-	size_t	ops_total;
 }	t_best;
 
 typedef struct s_sts
 {
 	size_t	index;
 	int		val;
-	size_t	ops_a_pos;
-	size_t	ops_a_neg;
-	size_t	ops_b_pos;
-	size_t	ops_b_neg;
+	long	ops_a_pos;
+	long	ops_a_neg;
+	long	ops_b_pos;
+	long	ops_b_neg;
 }	t_sts;
+
+typedef struct s_sts_bounds
+{
+	t_sts	rbb_high;
+	t_sts	rbb_low;
+	t_sts	rba_high;
+	t_sts	rba_low;
+}	t_sts_bounds;
 
 typedef struct s_stacks
 {
@@ -93,7 +100,10 @@ void		stx_no_dupes(t_stacks stx);
 // stx sort
 void		stx_sort(t_stacks *stx);
 void		stx_get_rba_high(t_stacks *stx);
+
 void		stx_ops_push_to(t_stacks *stx, char stack);
 void		stx_ops_push_from(t_stacks *stx, char stack);
+
+int			stx_init_pb(t_stacks *stx);
 
 #endif
