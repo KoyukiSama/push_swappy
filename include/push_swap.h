@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 19:20:46 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/25 13:55:09 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ typedef	struct s_best
 	size_t	index;
 	size_t	best_a;
 	size_t	best_b;
-	char	push_to;
+	char	push_from;
+	size_t	ra;
+	size_t	rb;
+	size_t	rr;
+	size_t	rra;
+	size_t	rrb;
+	size_t	rrr;
 	size_t	ops_total;
 }	t_best;
 
