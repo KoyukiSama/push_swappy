@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 14:03:13 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/25 14:15:04 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,11 @@ int	stx_sb(t_stacks *stx)
 
 int	stx_ss(t_stacks *stx)
 {
-	int	pass;
-
-	pass = 1;
 	if (!stx_sa(stx))
-		pass = 0;
+		return (0);
 	if (!stx_sb(stx))
-		pass = 0;
-	return (pass);
+		return (stx_sa(stx), 0);
+	return (1);
 }
 
 int	stx_pa(t_stacks *stx)
