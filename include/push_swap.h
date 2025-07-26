@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 17:47:06 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/26 19:36:27 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void		stx_ops_push_to(t_stacks *stx, char stack);
 void		stx_ops_push_from(t_stacks *stx, char stack);
 
 int			stx_init_pb(t_stacks *stx);
+
+int			stx_do_ops(t_stacks *stx, t_best best);
 
 // finds best ops for current stack
 t_best		stx_ops_best(t_sts sts, char stack);
