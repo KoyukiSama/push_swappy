@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 14:15:04 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/26 19:34:41 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	stx_ss(t_stacks *stx)
 	return (1);
 }
 
+// push to a
 int	stx_pa(t_stacks *stx)
 {
 	t_ringbuff	*rb_a;
