@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 17:50:54 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/26 15:07:38 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,17 @@ t_best	stx_push_boundry(t_sts sts)
 	return (best_sts);
 }
 
-// TODO
 static t_best	calc_best(t_best best_sts)
 {
-	if (best_sts.ops_a >= 0 && best_sts.ops_b >= 0 && best_sts.ops_a < best_sts.ops_b)
-	{
-		best_sts.rr = best_sts.ops_a;
-		best_sts.ra = 0;
-		best_sts.rb = best_sts.ops_b - best_sts.ops_a;
-	}
-	else if (best_sts.ops_a >= 0 && best_sts.ops_b >= 0 && best_sts.ops_a > best_sts.ops_b)
-	{
-		best_sts.rr = best_sts.ops_b;
-		best_sts.ra = best_sts.ops_a - best_sts.ops_b;
-		best_sts.rb = 0;
-	}
-	else if (best_sts.ops_a < 0 && best_sts.ops_b < 0 && best_sts.ops_a > best_sts.ops_b)
-	{
-		best_sts.rr = -best_sts.ops_a;
-		best_sts.ra = 0;
-		best_sts.rb = best_sts.ops_a - best_sts.ops_b;
-	}
-	else if (best_sts.ops_a < 0 && best_sts.ops_b < 0 && best_sts.ops_a < best_sts.ops_b)
-	{ // TODO
-		best_sts.rr = -best_sts.ops_a;
-		best_sts.ra = 0;
-		best_sts.rb = best_sts.ops_a - best_sts.ops_b;
-	}
+	best_sts.ra = 0;
+	best_sts.rb = 0;
+	best_sts.rr = 0;
+	best_sts.rra = 0;
+	best_sts.rrb = 0;
+	best_sts.rrr = 0;
+	best_sts = calc_best_helpr(best_sts);
+	best_sts.ops_total = best_sts.ra + best_sts.rb + best_sts.rr;
+	best_sts.ops_total += best_sts.rra + best_sts.rrb + best_sts.rrr;
 	return (best_sts);
 }
 

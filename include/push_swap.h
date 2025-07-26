@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 17:09:54 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/26 15:04:50 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,7 @@ void		stx_ops_push_to(t_stacks *stx, char stack);
 void		stx_ops_push_from(t_stacks *stx, char stack);
 
 int			stx_init_pb(t_stacks *stx);
+
+t_best		calc_best_helpr(t_best best_sts)
 
 #endif
