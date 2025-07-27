@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 17:51:03 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 19:43:26 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,6 @@ typedef struct s_stacks
 // operations 
 // all returns success value
 
-int			stx_sa(t_stacks *stx);
-int			stx_sb(t_stacks *stx);
-int			stx_ss(t_stacks *stx);
 int			stx_pa(t_stacks *stx);
 int			stx_pb(t_stacks *stx);
 int			stx_ra(t_stacks *stx);
