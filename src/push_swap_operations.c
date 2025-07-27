@@ -6,49 +6,12 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 19:34:41 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:52:37 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
-
-int	stx_sa(t_stacks *stx)
-{
-	int	temp;
-	t_ringbuff	*rb_a;
-
-	rb_a = &(stx->rb_a);
-	if (rb_isempty(*rb_a) || rb_isone(*rb_a))
-		return (0);
-	temp = rb_get(*rb_a, rb_top_index(*rb_a));
-	rb_set(rb_a, rb_top_index(*rb_a), rb_get(*rb_a, rb_top_index(*rb_a) - 1));
-	rb_set(rb_a, (rb_top_index(*rb_a) - 1) & rb_a->mask, temp);
-	return (1);
-}
-
-int	stx_sb(t_stacks *stx)
-{
-	int	temp;
-	t_ringbuff	*rb_b;
-
-	rb_b = &(stx->rb_b);
-	if (rb_isempty(*rb_b) || rb_isone(*rb_b))
-		return (0);
-	temp = rb_get(*rb_b, rb_top_index(*rb_b));
-	rb_set(rb_b, rb_top_index(*rb_b), rb_get(*rb_b, rb_top_index(*rb_b) - 1));
-	rb_set(rb_b, (rb_top_index(*rb_b) - 1) & rb_b->mask, temp);
-	return (1);
-}
-
-int	stx_ss(t_stacks *stx)
-{
-	if (!stx_sa(stx))
-		return (0);
-	if (!stx_sb(stx))
-		return (stx_sa(stx), 0);
-	return (1);
-}
 
 // push to a
 int	stx_pa(t_stacks *stx)
@@ -60,11 +23,12 @@ int	stx_pa(t_stacks *stx)
 	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_b))
 		return (0);
-	rb_addtop(rb_a, rb_get(*rb_b, rb_top_index(*rb_b)));
+	rb_addtop(rb_a, rb_get_top(*rb_b));
 	rb_remtop(rb_b);
 	return (1);
 }
 
+// push to b
 int	stx_pb(t_stacks *stx)
 {
 	t_ringbuff	*rb_a;
@@ -74,7 +38,7 @@ int	stx_pb(t_stacks *stx)
 	rb_b = &(stx->rb_b);
 	if (rb_isempty(*rb_a))
 		return (0);
-	rb_addtop(rb_b, rb_get(*rb_a, rb_top_index(*rb_a)));
+	rb_addtop(rb_b, rb_get_top(*rb_a));
 	rb_remtop(rb_a);
 	return (1);
 }
