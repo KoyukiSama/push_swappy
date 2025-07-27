@@ -6,14 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/25 14:19:30 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 15:01:16 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // returns ops
-int	stx_init_pb(t_stacks *stx)
+size_t	stx_init_pb(t_stacks *stx)
 {
 	size_t	i;
 	size_t	count;
