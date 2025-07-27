@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 17:42:09 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 17:51:03 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void		stx_no_dupes(t_stacks stx);
 void		stx_sort(t_stacks *stx);
 
 // searches for bounds of stack A and B
-void		stx_get_rba_high(t_stacks *stx);
+void		stx_get_bounds(t_stacks *stx);
 
 void		stx_ops_push_to(t_stacks *stx, char stack);
 void		stx_ops_push_from(t_stacks *stx, char stack);
@@ -102,16 +102,12 @@ void		stx_ops_push_from(t_stacks *stx, char stack);
 size_t		stx_do_ops(t_stacks *stx, t_best best);
 
 // helpr for initializing the stacks
-size_t		stx_init_pb(t_stacks *stx);
+size_t		stx_init_push_to_b(t_stacks *stx);
 size_t		stx_init_push_bounds(t_stacks *stx);
 
 // finds best ops for current stack
 t_best		stx_ops_best(t_sts sts, char stack);
 t_best		calc_best_helpr(t_best best_sts);
-
-// find best bounds
-t_best		stx_find_best_bounds(t_stacks *stx, t_sts_bounds sts_bnds);
-
 
 
 // DEBUG------------------------------!!!!!------------------------------------------

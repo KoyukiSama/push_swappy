@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 15:35:30 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:06:24 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@ int main(int argc, char *argv[])
 	else
 		stx = stx_init_smlstr(argv + 1, argc - 1);
 	stx_no_dupes(stx);
-	stx_get_rba_high(&stx);
+	stx_get_bounds(&stx);
 	
-printf("rba_low: %i, rba_high: %i, rbb_low: %i, rbb_high: %i\n", stx.rba_low, stx.rba_high, stx.rbb_low, stx.rbb_high);
-printf("index: %li, val: %i\n", stx.sts.index, stx.sts.val);
-printf("a_pos: %li , a_neg: %li\nb_pos: %li, b_neg: %li\n", stx.sts.ops_a_pos, stx.sts.ops_a_neg\
-, stx.sts.ops_b_pos, stx.sts.ops_b_neg);
+printf("\nrba_low: %i, rba_high: %i, rbb_low: %i, rbb_high: %i\n\n", stx.rba_low, stx.rba_high, stx.rbb_low, stx.rbb_high);
 
 	stx_sort(&stx);
 

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 16:21:56 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:55:23 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:53:43 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	rb_destroy(t_ringbuff rb)
 
 int	rb_isempty(t_ringbuff rb)
 {
-	return (rb.bot == rb.top);
+	return (rb.count == 0);
 }
 
 int	rb_isone(t_ringbuff rb)
 {
-	return (((rb.bot + 1) & rb.mask) == rb.top);
+	return (rb.count == 1);
 }

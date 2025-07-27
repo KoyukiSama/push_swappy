@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 17:41:15 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:00:54 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ static size_t	push_stack_a_rbb_val(t_stacks *stx, int rbb_val);
 static size_t	push_stack_b_rba_val(t_stacks *stx, int rba_val);
 
 // returns ops
-size_t	stx_push_bounds(t_stacks *stx)
+size_t	stx_init_push_bounds(t_stacks *stx)
 {
-	push_stack_a_rbb_val(stx, stx->rba_low);
-	push_stack_a_rbb_val(stx, stx->rba_high);
-	push_stack_b_rba_val(stx, stx->rbb_high);
-	push_stack_b_rba_val(stx, stx->rbb_low);
+	size_t	ops;
+
+	ops = 0;
+	ops += push_stack_a_rbb_val(stx, stx->rba_low);
+	ops += push_stack_a_rbb_val(stx, stx->rba_high);
+	ops += push_stack_b_rba_val(stx, stx->rbb_high);
+	ops += push_stack_b_rba_val(stx, stx->rbb_low);
+	return (ops);
 }
 
 // push from stack A, b_low or b_high

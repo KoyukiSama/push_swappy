@@ -10,18 +10,18 @@ void print_buff(t_stacks stx)
 	if (rb_a.buffer)
 	{
 		fprintf(stderr, "a: [ ");
-		for (size_t i = rb_a.bot; (i & rb_a.mask) != rb_a.top; i++)
+		for (size_t i = 0; i < rb_a.count; i++)
 		{
-			fprintf(stderr, "%i, ", rb_a.buffer[i & rb_a.mask]);
+			fprintf(stderr, "%i, ", rb_get(rb_a, i));
 		}
 		fprintf(stderr, " ]\n");
 	}
 	if (rb_b.buffer)
 	{
 		fprintf(stderr, "b: [ ");
-		for (size_t i = rb_b.bot; (i & rb_b.mask) != rb_b.top; i++)
+		for (size_t i = 0; i < rb_b.count; i++)
 		{
-			fprintf(stderr, "%i, ", rb_b.buffer[i & rb_b.mask]);
+			fprintf(stderr, "%i, ", rb_get(rb_b, i));
 		}
 		fprintf(stderr, " ]\n");
 	}

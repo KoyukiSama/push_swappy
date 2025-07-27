@@ -6,14 +6,15 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 15:01:16 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:57:08 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+#include <stdio.h>
 // returns ops
-size_t	stx_init_pb(t_stacks *stx)
+size_t	stx_init_push_to_b(t_stacks *stx)
 {
 	size_t	i;
 	size_t	count;
@@ -28,6 +29,8 @@ size_t	stx_init_pb(t_stacks *stx)
 		curr_top = rb_get_top(stx->rb_a);
 		if (curr_top >= stx->rba_low && curr_top <= stx->rba_high)
 			ops += stx_pb(stx);
+		else
+			ops += stx_ra(stx);
 		i++;
 	}
 	return (ops);

@@ -6,14 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 17:46:24 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:02:31 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-static t_best	best_sts_init(t_best best_sts, t_sts sts);
+static t_best	best_sts_init(t_sts sts);
 static t_best	calc_best(t_best best_sts);
 
 // calculates best stx operations
@@ -21,7 +21,7 @@ t_best	stx_ops_best(t_sts sts, char stack)
 {
 	t_best	best_sts;
 
-	best_sts = best_sts_init(best_sts, sts);
+	best_sts = best_sts_init(sts);
 	best_sts = calc_best(best_sts);
 	if (stack == 'A')
 		best_sts.push_from = 'A';
@@ -72,8 +72,10 @@ static t_best	calc_best(t_best best_sts)
 static t_best	pick_highest(t_best best_sts, long ops_a, long ops_b);
 static t_best	sum_both(t_best best_sts, long ops_a, long ops_b);
 
-static t_best	best_sts_init(t_best best_sts, t_sts sts)
+static t_best	best_sts_init(t_sts sts)
 {
+	t_best	best_sts;
+
 	best_sts.ops_a = 0;
 	best_sts.ops_b = 0;
 	best_sts.ops_total = sts.ops_a_pos + sts.ops_b_pos + -sts.ops_a_neg + -sts.ops_b_neg;

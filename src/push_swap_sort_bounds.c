@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_sort_rba_high.c                          :+:    :+:            */
+/*   push_swap_sort_bounds.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 15:39:19 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 18:21:46 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	find_next_low_high(int *low, int *high, t_stacks *stx);
 static void	find_low_high(int *low, int *high, t_stacks *stx);
 static void	find_next_low(int *low, t_stacks *stx);
 
-void	stx_get_rba_high(t_stacks *stx)
+void	stx_get_bounds(t_stacks *stx)
 {
 	size_t	iters_half;
 	size_t	i;
@@ -34,9 +34,9 @@ void	stx_get_rba_high(t_stacks *stx)
 		find_next_low_high(&low, &high, stx);
 		i++;
 	}
-	stx->rbb_low = high;
-	find_next_low(&high, stx);
-	stx->rba_high = high;
+	stx->rbb_low = low;
+	find_next_low(&low, stx);
+	stx->rba_high = low;
 }
 
 static void	find_low_high(int *low, int *high, t_stacks *stx)

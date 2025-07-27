@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:42:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 15:40:30 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 17:59:00 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	rb_top_index(t_ringbuff rb)
 
 int		rb_get_top(t_ringbuff rb)
 {
-	return (rb_get(rb, rb_top_index));
+	return (rb_get(rb, rb_top_index(rb)));
 }
 
 // returns rb_count + 1 if mistake happened.
