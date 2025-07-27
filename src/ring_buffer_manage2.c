@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:42:18 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 17:59:00 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 19:17:15 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t	rb_get_index(t_ringbuff rb, int val)
 		curr_val = rb_get(rb, i);
 		if (curr_val == val)
 			return (i);
+		i++;
 	}
 	return (rb.count + 1);
 }
