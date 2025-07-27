@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 19:05:45 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 14:52:05 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,23 @@ int	stx_init_push_boundries(t_stacks *stx)
 	t_sts_bounds	sts_bnds;
 
 	tot_ops = 0;
-	while (tot_ops = 0 || 
-(sts_bnds.rba_high.index != -1 || sts_bnds.rba_low.index != -1 || 
-sts_bnds.rbb_high.index != -1 || sts_bnds.rbb_low.index != -1))
+	while (tot_ops == 0 || 
+(sts_bnds.rba_high.index != -1 && sts_bnds.rba_low.index != -1 && 
+sts_bnds.rbb_high.index != -1 && sts_bnds.rbb_low.index != -1))
 	{
 		sts_bnds = sts_bounds_init();
 		sts_bnds = get_sts_bounds(stx, sts_bnds);
+		tot_ops += stx_push_boundry(stx, sts_bnds);
 	}
 }
 
 // if push_from = 0, then no best has been found
 static int	stx_push_boundry(t_stacks *stx, t_sts_bounds sts_bnds)
 {
-	t_best	temp_best;
 	t_best	best;
-
-	best.push_from = 0;
-	temp_best.ops_total = 9999999999999999;
-	best.ops_total = 9999999999999999;
-	if (sts_bnds.rba_low.index != -1)
-		temp_best = stx_ops_best(sts_bnds.rba_low, 'B');
-	if (temp_best.ops_total < best.ops_total)
-		best = temp_best;
-	if (sts_bnds.rba_high.index != -1 )
-		temp_best = stx_ops_best(sts_bnds.rba_high, 'B');
-	if (temp_best.ops_total < best.ops_total)
-		best = temp_best;
-	if (sts_bnds.rbb_low.index != -1)
-		temp_best = stx_ops_best(sts_bnds.rbb_low, 'A');
-	if (temp_best.ops_total < best.ops_total)
-		best = temp_best;
-	if (sts_bnds.rbb_high.index != -1 )
-		temp_best = stx_ops_best(sts_bnds.rbb_high, 'A');
-	if (temp_best.ops_total < best.ops_total)
-		best = temp_best;
-	return (best);
+	
+	best = stx_find_best_bounds(stx, sts_bnds);
+	return (stx_do_ops(stx, best));
 }
 
 static t_sts	stx_ops_index(t_stacks *stx, size_t index, char stack);

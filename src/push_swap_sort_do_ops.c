@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 19:35:24 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 14:41:38 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	stx_do_ops(t_stacks *stx, t_best best)
 	if (best.push_from == 'A')
 		stx_pb(stx);
 	else if (best.push_from == 'B')
-		stx_pa(stx)
+		stx_pa(stx);
 	else
 		return (0);
 	return (best.ops_total);

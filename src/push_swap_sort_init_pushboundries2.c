@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/26 19:12:16 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/27 14:47:17 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 static int	stx_push_boundry(t_stacks *stx, t_sts_bounds sts_bnds);
 
-// returns ops
-int	stx_push_boundry_helpr(t_stacks *stx, t_sts_bounds sts_bnds)
+// returns best bounds
+t_best	stx_find_best_bounds(t_stacks *stx, t_sts_bounds sts_bnds)
 {
 	t_best	best;
 
-	best = stx_find_curr_best(stx, sts_bnds);
-	
+	return (stx_find_curr_best(stx, sts_bnds));
 }
 
 // if push_from == 0, then no best has been found
