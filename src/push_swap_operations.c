@@ -6,13 +6,13 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 18:52:37 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 22:30:25 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
-
+#include "unistd.h"
 // push to a
 int	stx_pa(t_stacks *stx)
 {
@@ -25,6 +25,7 @@ int	stx_pa(t_stacks *stx)
 		return (0);
 	rb_addtop(rb_a, rb_get_top(*rb_b));
 	rb_remtop(rb_b);
+	write(1, "pa\n", 3);
 	return (1);
 }
 
@@ -40,67 +41,6 @@ int	stx_pb(t_stacks *stx)
 		return (0);
 	rb_addtop(rb_b, rb_get_top(*rb_a));
 	rb_remtop(rb_a);
+	write(1, "pb\n", 3);
 	return (1);
 }
-
-// #include <stdio.h>
-// void print_buff(t_ringbuff *rb_a, t_ringbuff *rb_b)
-// {
-// 	// fprintf(stderr, "a: [ ");
-// 	// for (size_t i = 0; i < rb_a->size; i++)
-// 	// {
-// 	// 	fprintf(stderr, "%i, ", (*rb_a).buffer[i]);
-// 	// }
-// 	// fprintf(stderr, " ]\n");
-// 	if (rb_a)
-// 	{
-// 		fprintf(stderr, "a: [ ");
-// 		for (size_t i = rb_a->bot; (i & rb_a->mask) != rb_a->top; i++)
-// 		{
-// 			fprintf(stderr, "%i, ", (*rb_a).buffer[i & rb_a->mask]);
-// 		}
-// 		fprintf(stderr, " ]\n");
-// 	}
-// 	if (rb_b)
-// 	{
-// 		fprintf(stderr, "b: [ ");
-// 		for (size_t i = rb_b->bot; (i & rb_a->mask) != rb_b->top; i++)
-// 		{
-// 			fprintf(stderr, "%i, ", (*rb_b).buffer[i & rb_b->mask]);
-// 		}
-// 		fprintf(stderr, " ]\n");
-// 	}
-// 	fprintf(stderr, "\n");
-// }
-
-// int main(void)
-// {
-// 	t_stacks stacks;
-	
-// 	stacks.rb_a = rb_init(8);
-// 	stacks.rb_b = rb_init(8);
-
-// 	for (size_t i = 0; i < 8; i++)
-// 	{
-// 		rb_a.buffer[i] = 0;
-// 		rb_b.buffer[i] = 0;
-// 	}
-// 	rb_addtop(&rb_a, 1);
-// 	rb_addtop(&rb_a, 2);
-// 	rb_addtop(&rb_a, 3);
-// 	rb_addtop(&rb_b, 1);
-// 	rb_addtop(&rb_b, 2);
-// 	rb_addtop(&rb_b, 3);
-// 	fprintf(stderr, "top: %lu , bot: %lu\n", rb_a.top, rb_a.bot);
-// 	print_buff(&rb_a, &rb_b);
-// 	rb_ss(&rb_a, &rb_b);
-// 	//rb_sb(&rb_a, &rb_b);
-	
-// 	fprintf(stderr, "top: %lu , bot: %lu\n", rb_a.top, rb_a.bot);
-// 	print_buff(&rb_a, &rb_b);
-
-// 	rb_a.top += 1;
-
-// 	rb_destroy(rb_a);
-// 	rb_destroy(rb_b);
-// }

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 18:54:33 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 22:30:34 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	stx_ra(t_stacks *stx)
 		return (0);
 	rb_addbot(rb_a, rb_get_top(*rb_a));
 	rb_remtop(rb_a);
+	write(1, "ra\n", 3);
 	return (1);
 }
 
@@ -34,6 +35,7 @@ int stx_rb(t_stacks *stx)
 		return (0);
 	rb_addbot(rb_b, rb_get_top(*rb_b));
 	rb_remtop(rb_b);
+	write(1, "rb\n", 3);
 	return (1);
 }
 
@@ -43,5 +45,6 @@ int stx_rr(t_stacks *stx)
 		return (0);
 	if (!stx_rb(stx))
 		return (stx_ra(stx), 0);
+	write(1, "rr\n", 3);
 	return (1);
 }
