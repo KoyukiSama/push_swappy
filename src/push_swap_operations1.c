@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/28 22:32:38 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 22:40:45 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ int stx_rb(t_stacks *stx)
 
 int stx_rr(t_stacks *stx)
 {
-	if (!stx_ra(stx))
+	if (rb_isempty(stx->rb_a) || rb_isone(stx->rb_a)
+|| rb_isempty(stx->rb_b) || rb_isone(stx->rb_b))
 		return (0);
-	if (!stx_rb(stx))
-		return (stx_ra(stx), 0);
+	rb_addbot(&(stx->rb_a), rb_get_top(stx->rb_a));
+	rb_remtop(&(stx->rb_a));
+	rb_addbot(&(stx->rb_b), rb_get_top(stx->rb_b));
+	rb_remtop(&(stx->rb_b));
 	write(1, "rr\n", 3);
 	return (1);
 }
