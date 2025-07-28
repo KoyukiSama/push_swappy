@@ -6,13 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/12 17:27:30 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/28 22:30:25 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 22:32:34 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ring_buffer.h"
 #include "push_swap.h"
 #include "unistd.h"
+
 // push to a
 int	stx_pa(t_stacks *stx)
 {
