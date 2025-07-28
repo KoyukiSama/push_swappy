@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_sort_do_ops.c                            :+:    :+:            */
+/*   push_swap_sort_ops_do.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 15:00:37 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 20:21:32 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	stx_do_ops_double(t_stacks *stx, t_best best);
 static void	stx_do_ops_a(t_stacks *stx, t_best best);
 static void	stx_do_ops_b(t_stacks *stx, t_best best);
 
+#include <stdio.h>
 // returns ops
 size_t	stx_do_ops(t_stacks *stx, t_best best)
 {
@@ -38,7 +39,7 @@ static void	stx_do_ops_double(t_stacks *stx, t_best best)
 		stx_rr(stx);
 		best.rr--;
 	}
-	while (best.rrr--)
+	while (best.rrr)
 	{
 		stx_rrr(stx);
 		best.rrr--;
@@ -47,7 +48,7 @@ static void	stx_do_ops_double(t_stacks *stx, t_best best)
 
 static void	stx_do_ops_a(t_stacks *stx, t_best best)
 {
-	while (best.ra--)
+	while (best.ra)
 	{
 		stx_ra(stx);
 		best.ra--;
@@ -61,7 +62,7 @@ static void	stx_do_ops_a(t_stacks *stx, t_best best)
 
 static void	stx_do_ops_b(t_stacks *stx, t_best best)
 {
-	while (best.rb--)
+	while (best.rb)
 	{
 		stx_rb(stx);
 		best.rb--;

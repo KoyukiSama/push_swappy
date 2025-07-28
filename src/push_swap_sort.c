@@ -6,24 +6,26 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 20:02:56 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/28 20:27:05 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static size_t	stx_insert(t_stacks *stx);
 
+#include <stdio.h>
 // returns total nbr of stx
 void	stx_sort(t_stacks *stx)
 {
 	long	tot_ops;
 
-	print_buff(*stx);
 	tot_ops = 0;
 	tot_ops += stx_init_push_to_b(stx);
 	tot_ops += stx_init_push_bounds(stx);
+	tot_ops += stx_insert(stx);
 
-
+	printf("ops: %lu", tot_ops);
 	print_buff(*stx);
 }
 
@@ -36,28 +38,28 @@ static size_t	stx_insert(t_stacks *stx)
 	t_best	temp_best;
 	t_best	best;
 	size_t	i;
-	char	b_val_in_a_found;
-	char	a_val_in_b_found;
+	char	found;
 
+	found = 1;
 	ops = 0;
-	b_val_in_a_found = 1;
-	a_val_in_b_found = 1;
-	while (b_val_in_a_found || a_val_in_b_found)
+	while (found)
 	{
+		found = 0;
 		temp_best.ops_total = 999999999999999999;
 		best.ops_total = 999999999999999999;
 		i = 0;
 		while (i < stx->rb_a.count)
 		{
 			stx_ops_index(stx, i, 'A');
+			//printf("val: %i\n", stx->sts.val);
+			//printf("ops_a_pos: %li, ops_a_neg: %li\n", stx->sts.ops_a_pos, stx->sts.ops_a_neg);
 			if (stx->sts.val >= stx->rbb_low && stx->sts.val <= stx->rbb_high)
 			{
 				temp_best = stx_ops_best(stx->sts, 'A');
 				if (temp_best.ops_total < best.ops_total)
 					best = temp_best;
+				found = 1;
 			}
-			else
-				b_val_in_a_found = 0;
 			i++;
 		}
 		i = 0;
@@ -66,16 +68,16 @@ static size_t	stx_insert(t_stacks *stx)
 			stx_ops_index(stx, i, 'B');
 			if (stx->sts.val >= stx->rba_low && stx->sts.val <= stx->rba_high)
 			{
-				temp_best = stx_ops_best(stx->sts, 'A');
+				temp_best = stx_ops_best(stx->sts, 'B');
 				if (temp_best.ops_total < best.ops_total)
 					best = temp_best;
+				found = 1;
 			}
-			else
-				a_val_in_b_found = 0;
 			i++;
 		}
-		if (b_val_in_a_found || a_val_in_b_found)
+		if (found)
 			ops += stx_do_ops(stx, best);
+		print_buff(*stx);
 	}
 	return (ops);
 }

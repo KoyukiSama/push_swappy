@@ -49,3 +49,16 @@ void print_buff(t_stacks stx)
 	}
 	fprintf(stderr, "\n");
 }
+
+void print_best(t_best best)
+{
+	printf("|| best_opa_a: %li, best_ops_b: %li\n", best.ops_a, best.ops_b);
+	printf("|| push_from: %c\n", best.push_from);
+	printf("|| ops_total: %lu\n", best.ops_total);
+	printf("||| ra: %lu\n", best.ra);
+	printf("||| rb: %lu\n", best.rb);
+	printf("||| rr: %lu\n", best.rr);
+	printf("||| rra: %lu\n", best.rra);
+	printf("||| rrb: %lu\n", best.rrb);
+	printf("||| rrr: %lu\n", best.rrr);
+}
