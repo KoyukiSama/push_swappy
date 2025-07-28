@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 18:21:46 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 00:19:48 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	stx_get_bounds(t_stacks *stx)
 
 	find_low_high(&low, &high, stx);
 	stx->rba_low = low;
-	stx->rba_high = high;
 	stx->rbb_high = high;
 	iters_half = stx->rb_a.count / 2;
 	i = 0;
