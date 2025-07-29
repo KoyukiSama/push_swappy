@@ -26,6 +26,7 @@ SRC			:= push_swap_manage.c \
 				ring_buffer_modify2.c \
 \
 				push_swap_sort.c \
+				push_swap_sort3.c \
 				push_swap_sort_bounds.c \
 				push_swap_sort_finish.c \
 				push_swap_sort_init_pushbounds.c \

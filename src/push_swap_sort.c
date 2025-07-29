@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 20:07:29 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 20:29:24 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ static size_t	stx_insert(t_stacks *stx);
 void	stx_sort(t_stacks *stx)
 {
 	long	tot_ops;
-
 	if (stx->rb_a.count == 2)
 	{
 		if (rb_get(stx->rb_a, 0) < rb_get(stx->rb_a, 1))
 			stx_ra(stx);
+		return ;
+	}
+	if (stx->rb_a.count == 3)
+	{
+		stx_sort_3(stx);
 		return ;
 	}
 	tot_ops = 0;

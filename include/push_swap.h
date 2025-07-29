@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 20:05:09 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 20:28:06 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		stx_check_ordered(t_stacks stx);
 
 // stx sort
 void		stx_sort(t_stacks *stx);
+void		stx_sort_3(t_stacks *stx);
 
 // searches for bounds of stack A and B
 void		stx_get_bounds(t_stacks *stx);
