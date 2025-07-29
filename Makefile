@@ -18,6 +18,8 @@ SRC			:= push_swap_manage.c \
 				push_swap_parse_smlstr.c \
 				push_swap_parse_dupes.c \
 \
+				push_swap_check_ordered.c \
+\
 				ring_buffer_manage.c \
 				ring_buffer_manage2.c \
 				ring_buffer_modify.c \

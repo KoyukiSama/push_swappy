@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   push_swap_check_ordered.c                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 20:04:35 by kclaes        ########   odam.nl         */
+/*   Created: 2025/07/29 19:33:13 by kclaes        #+#    #+#                 */
+/*   Updated: 2025/07/29 20:08:04 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
+#include "ring_buffer.h"
 
-int main(int argc, char *argv[])
+void	stx_check_ordered(t_stacks stx)
 {
-	t_stacks	stx;
+	size_t	i;
+	int		prev_val;
+	int		curr_val;
 
-	if (argc == 1)
-		exit(0);
-	if (argc == 2)
-		stx = stx_init_bigstr(argv[1]);
-	else
-		stx = stx_init_smlstr(argv + 1, argc - 1);
-	stx_no_dupes(stx);
-	stx_check_ordered(stx);
-	stx_get_bounds(&stx);
-	stx_sort(&stx);
+	if (stx.rb_a.count == 1)
+		exit_clean(0, &stx);
+	i = 1;
+	prev_val = rb_get(stx.rb_a, 0);
+	while (i < stx.rb_a.count)
+	{
+		curr_val = rb_get(stx.rb_a, i);
+		if (curr_val > prev_val)
+			return ;	
+		i++;
+	}
 	exit_clean(0, &stx);
 }

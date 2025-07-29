@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 18:19:33 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 20:07:29 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	stx_sort(t_stacks *stx)
 {
 	long	tot_ops;
 
-	if (stx->rb_a.count == 1)
-		return ;
 	if (stx->rb_a.count == 2)
 	{
 		if (rb_get(stx->rb_a, 0) < rb_get(stx->rb_a, 1))

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 17:47:34 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 20:05:09 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void		exit_clean(int err_code, t_stacks *stx);
 t_stacks	stx_init_bigstr(const char *str);
 t_stacks	stx_init_smlstr(char **strs, size_t strs_size);
 void		stx_no_dupes(t_stacks stx);
+
+// checks if ordered
+void		stx_check_ordered(t_stacks stx);
 
 // stx sort
 void		stx_sort(t_stacks *stx);
