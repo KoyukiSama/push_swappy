@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/15 15:01:44 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 18:02:25 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 18:46:42 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,21 @@ t_stacks	stx_init_smlstr(char **strs, size_t strs_size)
 	return (stx);
 }
 
+#include <stdio.h>
 static int	smlstr_is_valid(char **strs, size_t strs_size)
 {
 	size_t	i;
 	size_t	nbr_count;
 
-	i = 0;
 	nbr_count = 0;
 	while (nbr_count < strs_size)
 	{
+		i = 0;
 		if (ft_issign(strs[nbr_count][i]))
 			i++;
 		while (ft_isdigit(strs[nbr_count][i]))
 			i++;
-		if (!(strs[nbr_count][i] == '\0'))
+		if (strs[nbr_count][i] != '\0')
 			exit_clean(ERR_SML_STR_IS_VALID, NULL);
 		nbr_count++;
 	}

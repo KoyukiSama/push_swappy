@@ -6,13 +6,12 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 18:57:08 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 18:20:08 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
 // returns ops
 size_t	stx_init_push_to_b(t_stacks *stx)
 {

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/28 20:17:35 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 17:47:34 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ size_t		stx_do_ops(t_stacks *stx, t_best best);
 // helpr for initializing the stacks
 size_t		stx_init_push_to_b(t_stacks *stx);
 size_t		stx_init_push_bounds(t_stacks *stx);
+
+// finish after sorting
+size_t		stx_finish(t_stacks *stx);
 
 // finds best ops for current stack
 t_best		stx_ops_best(t_sts sts, char stack);

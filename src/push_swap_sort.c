@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/28 23:09:54 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/29 18:19:33 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,32 @@
 
 static size_t	stx_insert(t_stacks *stx);
 
-#include <stdio.h>
 // returns total nbr of stx
 void	stx_sort(t_stacks *stx)
 {
 	long	tot_ops;
 
+	if (stx->rb_a.count == 1)
+		return ;
+	if (stx->rb_a.count == 2)
+	{
+		if (rb_get(stx->rb_a, 0) < rb_get(stx->rb_a, 1))
+			stx_ra(stx);
+		return ;
+	}
 	tot_ops = 0;
 	tot_ops += stx_init_push_to_b(stx);
 	tot_ops += stx_init_push_bounds(stx);
 	tot_ops += stx_insert(stx);
-
-	printf("ops: %lu", tot_ops);
-	print_buff(*stx);
+	tot_ops += stx_finish(stx);
+	return ;
 }
 
 static void		stx_ops_index(t_stacks *stx, size_t index, char stack);
 static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found);
 static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found);
 
-// inserts the nbrs from stack a into b and b into a
+//inserts the nbrs from stack a into b and b into a
 static size_t	stx_insert(t_stacks *stx)
 {
 	size_t	ops;
@@ -54,7 +60,7 @@ static size_t	stx_insert(t_stacks *stx)
 	return (ops);
 }
 
-// get best ops stack a
+//get best ops stack a
 static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found)
 {
 	t_best	temp_best;
