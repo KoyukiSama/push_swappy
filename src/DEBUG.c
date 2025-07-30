@@ -62,3 +62,8 @@ void print_best(t_best best)
 	printf("||| rrb: %lu\n", best.rrb);
 	printf("||| rrr: %lu\n", best.rrr);
 }
+
+void print_bounds(t_stacks *stx)
+{
+	printf("A_low: %i, A_high: %i, B_low: %i, B_high: %i\n", stx->rba_low, stx->rba_high, stx->rbb_low, stx->rbb_high);
+}

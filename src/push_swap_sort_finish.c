@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 17:59:26 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/30 18:09:00 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static size_t	push_stack_b_to_a(t_stacks *stx)
 	int		full;
 	size_t	ops;
 
+	ops = 0;
 	full = 1;
 	while (full)
 	{

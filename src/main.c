@@ -6,13 +6,14 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 18:17:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 20:04:35 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/30 18:29:18 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
+#include <stdio.h>
 int main(int argc, char *argv[])
 {
 	t_stacks	stx;
@@ -27,5 +28,7 @@ int main(int argc, char *argv[])
 	stx_check_ordered(stx);
 	stx_get_bounds(&stx);
 	stx_sort(&stx);
+	stx_check_ordered(stx);
+	printf("not-ordered\n");
 	exit_clean(0, &stx);
 }

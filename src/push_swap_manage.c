@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:49:21 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/22 15:42:29 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/30 18:18:58 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void exit_clean(int err_code, t_stacks *stx)
 {
 	if (stx)
 		stx_destroy(stx);
-	exit(stx_perror(err_code));
+	if (err_code != 0)
+		exit(stx_perror(err_code));
+	exit(0);
 }
 
 static int	stx_perror(int error_nbr)

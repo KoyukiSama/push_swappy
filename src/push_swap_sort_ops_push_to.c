@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/24 22:14:23 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/30 19:32:23 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,33 @@
 static void	find_above_below_index_a(int *highest, int *lowest, t_stacks *stx);
 static void	find_above_below_index_b(int *highest, int *lowest, t_stacks *stx);
 
+#include <stdio.h>
 void	stx_ops_push_to(t_stacks *stx, char stack)
 {
 	int	lowest;
 	int	highest;
+	int	val;
 
-	if (stack == 'B')
+	val = stx->sts.val;
+	if (stack == 'B' && val >= stx->rbb_low && val <= stx->rbb_high)
 	{
 		find_above_below_index_b(&highest, &lowest, stx);
 		stx->sts.ops_b_neg = -highest;
 		stx->sts.ops_b_pos = rb_top_index(stx->rb_b) - lowest;
 		return ;
 	}
-	find_above_below_index_a(&highest, &lowest, stx);
-	stx->sts.ops_a_neg = -highest;
-	stx->sts.ops_a_pos = rb_top_index(stx->rb_a) - lowest;
+	if (stack == 'A' && val >= stx->rba_low && val <= stx->rba_high)
+	{
+		find_above_below_index_a(&highest, &lowest, stx);
+		stx->sts.ops_a_neg = -highest;
+		stx->sts.ops_a_pos = rb_top_index(stx->rb_a) - lowest;
+		if (stx->sts.val == 204)
+		{
+			printf("%lu - %i\n", rb_top_index(stx->rb_a), lowest);
+			printf("ops_a_neg: %li, ops_b_pos: %li\n", stx->sts.ops_a_neg, stx->sts.ops_a_pos);
+		}
+		return ;
+	}
 }
 
 static void	find_index_of_nbr(int *highest, int *lowest, t_stacks *stx, char stack);
@@ -51,6 +63,11 @@ static void	find_above_below_index_a(int *highest, int *lowest, t_stacks *stx)
 		if (curr_nbr <= *highest && curr_nbr > stx->sts.val)
 			*highest = curr_nbr;
 		i++;
+	}
+	if (stx->sts.val == 204)
+	{
+		printf("val: %i, high: %i, low: %i\n", stx->sts.val, *highest, *lowest);
+		print_buff(*stx);
 	}
 	find_index_of_nbr(highest, lowest, stx, 'A');
 	temp = *lowest;
