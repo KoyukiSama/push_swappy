@@ -29,7 +29,6 @@ SRC			:= push_swap_manage.c \
 				push_swap_sort3.c \
 				push_swap_sort_bounds.c \
 				push_swap_sort_finish.c \
-				push_swap_sort_init_pushbounds.c \
 				push_swap_sort_init_pushvals.c \
 				push_swap_sort_ops_do.c \
 				push_swap_sort_ops_lowest.c \

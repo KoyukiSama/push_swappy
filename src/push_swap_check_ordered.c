@@ -6,14 +6,13 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/29 19:33:13 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/30 18:28:22 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/31 15:21:15 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ring_buffer.h"
 
-#include <stdio.h>
 void	stx_check_ordered(t_stacks stx)
 {
 	size_t	i;

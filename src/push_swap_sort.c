@@ -6,18 +6,17 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/30 19:19:11 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/31 17:45:10 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	stx_insert(t_stacks *stx);
+//static size_t	stx_insert(t_stacks *stx);
 
 // returns total nbr of stx
 void	stx_sort(t_stacks *stx)
 {
-	long	tot_ops;
 	if (stx->rb_a.count == 2)
 	{
 		if (rb_get(stx->rb_a, 0) < rb_get(stx->rb_a, 1))
@@ -29,46 +28,41 @@ void	stx_sort(t_stacks *stx)
 		stx_sort_3(stx);
 		return ;
 	}
-	tot_ops = 0;
-	tot_ops += stx_init_push_to_b(stx);
-	tot_ops += stx_init_push_bounds(stx);
-	tot_ops += stx_insert(stx);
-	tot_ops += stx_finish(stx);
+	stx_init_push_to_b(stx);
+	//stx_insert(stx);
+	//tot_ops += stx_finish(stx);
 	print_bounds(stx);
 	print_buff(*stx);
 	return ;
 }
 
 static void		stx_ops_index(t_stacks *stx, size_t index, char stack);
-static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found, int *DEBUG_VAL);
-static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found, int *DEBUG_VAL);
+static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found);
+static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found);
 
 //inserts the nbrs from stack a into b and b into a
-static size_t	stx_insert(t_stacks *stx)
+static void	stx_insert(t_stacks *stx)
 {
-	size_t	ops;
 	t_best	best;
-	int		found;
-	int		DEBUG_VAL;
+	t_best	temp_best;
+	int		found;;
 
 	found = 1;
-	ops = 0;
 	while (found)
 	{
 		found = 0;
 		best.ops_total = 999999999999999999;
-		best = stx_best_ops_a(stx, best, &found, &DEBUG_VAL);
-		best = stx_best_ops_b(stx, best, &found, &DEBUG_VAL);
+		best = stx_best_ops_a(stx, best, &found);
+		temp_best = stx_best_ops_b(stx, best, &found);
+		if (temp_best.ops_total < best.ops_total)
+			best = temp_best;
 		if (found)
-			ops += stx_do_ops(stx, best);
-		if (DEBUG_VAL == 204)
-			print_buff(*stx);
+			stx_do_ops(stx, best);
 	}
-	return (ops);
 }
 
 //get best ops stack a
-static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found, int *DEBUG_VAL)
+static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found)
 {
 	t_best	temp_best;
 	size_t	i;
@@ -83,7 +77,6 @@ static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found, int *DEBUG_
 			if (temp_best.ops_total < best.ops_total)
 			{
 				best = temp_best;
-				*DEBUG_VAL = stx->sts.val;
 			}
 			*found = 1;
 		}
@@ -92,7 +85,7 @@ static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found, int *DEBUG_
 	return (best);
 }
 
-static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found, int *DEBUG_VAL)
+static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found)
 {
 	t_best	temp_best;
 	size_t	i;
@@ -107,7 +100,6 @@ static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found, int *DEBUG_
 			if (temp_best.ops_total < best.ops_total)
 			{
 				best = temp_best;
-				*DEBUG_VAL = stx->sts.val;
 			}
 			*found = 1;
 		}

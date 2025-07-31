@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/30 18:13:23 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/31 17:59:08 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ typedef struct s_stacks
 	t_ringbuff	rb_b;
 	int			rbb_high;
 	int			rbb_low;
+	int			b_max;
+	int			b_min;
 	int			rba_high;
 	int			rba_low;
+	int			a_max;
+	int			a_min;
 	t_sts		sts;
 	int			error;
 }	t_stacks;
@@ -102,9 +106,8 @@ void		stx_ops_push_from(t_stacks *stx, char stack);
 // gets total operations
 size_t		stx_do_ops(t_stacks *stx, t_best best);
 
-// helpr for initializing the stacks
-size_t		stx_init_push_to_b(t_stacks *stx);
-size_t		stx_init_push_bounds(t_stacks *stx);
+// init stack
+void		stx_init_push_to_b(t_stacks *stx);
 
 // finish after sorting
 size_t		stx_finish(t_stacks *stx);
@@ -113,6 +116,12 @@ size_t		stx_finish(t_stacks *stx);
 t_best		stx_ops_best(t_sts sts, char stack);
 t_best		calc_best_helpr(t_best best_sts);
 
+// helpers
+int			is_b_insertable(t_stacks *stx, int val);
+int			is_a_insertable(t_stacks *stx, int val);
+int			is_a_dumpable(t_stacks *stx, int val);
+int			is_b_bounds(t_stacks *stx, int curr_val);
+int			is_a_bounds(t_stacks *stx, int curr_val);
 
 // DEBUG------------------------------!!!!!------------------------------------------
 void		print_buff(t_stacks stx);

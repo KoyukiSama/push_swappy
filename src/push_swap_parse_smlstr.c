@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/15 15:01:44 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 18:46:42 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/07/31 15:21:41 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_stacks	stx_init_smlstr(char **strs, size_t strs_size)
 	return (stx);
 }
 
-#include <stdio.h>
 static int	smlstr_is_valid(char **strs, size_t strs_size)
 {
 	size_t	i;
