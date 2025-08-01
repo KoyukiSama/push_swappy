@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/31 17:36:40 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/31 17:58:58 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/01 23:46:51 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_a_insertable(t_stacks *stx, int curr_val)
 int	is_a_dumpable(t_stacks *stx, int curr_val)
 {
 	if (curr_val >= stx->rba_low && curr_val <= stx->rba_high && 
-!is_a_insertable(stx, curr_val));
+!is_a_insertable(stx, curr_val))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/31 17:45:10 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/01 23:45:35 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,90 +36,90 @@ void	stx_sort(t_stacks *stx)
 	return ;
 }
 
-static void		stx_ops_index(t_stacks *stx, size_t index, char stack);
-static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found);
-static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found);
+// static void		stx_ops_index(t_stacks *stx, size_t index, char stack);
+// static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found);
+// static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found);
 
-//inserts the nbrs from stack a into b and b into a
-static void	stx_insert(t_stacks *stx)
-{
-	t_best	best;
-	t_best	temp_best;
-	int		found;;
+// //inserts the nbrs from stack a into b and b into a
+// static void	stx_insert(t_stacks *stx)
+// {
+// 	t_best	best;
+// 	t_best	temp_best;
+// 	int		found;;
 
-	found = 1;
-	while (found)
-	{
-		found = 0;
-		best.ops_total = 999999999999999999;
-		best = stx_best_ops_a(stx, best, &found);
-		temp_best = stx_best_ops_b(stx, best, &found);
-		if (temp_best.ops_total < best.ops_total)
-			best = temp_best;
-		if (found)
-			stx_do_ops(stx, best);
-	}
-}
+// 	found = 1;
+// 	while (found)
+// 	{
+// 		found = 0;
+// 		best.ops_total = 999999999999999999;
+// 		best = stx_best_ops_a(stx, best, &found);
+// 		temp_best = stx_best_ops_b(stx, best, &found);
+// 		if (temp_best.ops_total < best.ops_total)
+// 			best = temp_best;
+// 		if (found)
+// 			stx_do_ops(stx, best);
+// 	}
+// }
 
-//get best ops stack a
-static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found)
-{
-	t_best	temp_best;
-	size_t	i;
+// //get best ops stack a
+// static t_best	stx_best_ops_a(t_stacks *stx, t_best best, int *found)
+// {
+// 	t_best	temp_best;
+// 	size_t	i;
 	
-	i = 0;
-	while (i < stx->rb_a.count)
-	{
-		stx_ops_index(stx, i, 'A');
-		if (stx->sts.val >= stx->rbb_low && stx->sts.val <= stx->rbb_high)
-		{
-			temp_best = stx_ops_best(stx->sts, 'A');
-			if (temp_best.ops_total < best.ops_total)
-			{
-				best = temp_best;
-			}
-			*found = 1;
-		}
-		i++;
-	}
-	return (best);
-}
+// 	i = 0;
+// 	while (i < stx->rb_a.count)
+// 	{
+// 		stx_ops_index(stx, i, 'A');
+// 		if (stx->sts.val >= stx->rbb_low && stx->sts.val <= stx->rbb_high)
+// 		{
+// 			temp_best = stx_ops_best(stx->sts, 'A');
+// 			if (temp_best.ops_total < best.ops_total)
+// 			{
+// 				best = temp_best;
+// 			}
+// 			*found = 1;
+// 		}
+// 		i++;
+// 	}
+// 	return (best);
+// }
 
-static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found)
-{
-	t_best	temp_best;
-	size_t	i;
+// static t_best	stx_best_ops_b(t_stacks *stx, t_best best, int *found)
+// {
+// 	t_best	temp_best;
+// 	size_t	i;
 
-	i = 0;
-	while (i < stx->rb_b.count)
-	{
-		stx_ops_index(stx, i, 'B');
-		if (stx->sts.val >= stx->rba_low && stx->sts.val <= stx->rba_high)
-		{
-			temp_best = stx_ops_best(stx->sts, 'B');
-			if (temp_best.ops_total < best.ops_total)
-			{
-				best = temp_best;
-			}
-			*found = 1;
-		}
-		i++;
-	}
-	return (best);
-}
+// 	i = 0;
+// 	while (i < stx->rb_b.count)
+// 	{
+// 		stx_ops_index(stx, i, 'B');
+// 		if (stx->sts.val >= stx->rba_low && stx->sts.val <= stx->rba_high)
+// 		{
+// 			temp_best = stx_ops_best(stx->sts, 'B');
+// 			if (temp_best.ops_total < best.ops_total)
+// 			{
+// 				best = temp_best;
+// 			}
+// 			*found = 1;
+// 		}
+// 		i++;
+// 	}
+// 	return (best);
+// }
 
-//gets ops from index
-static void	stx_ops_index(t_stacks *stx, size_t index, char stack)
-{
-	stx->sts.index = index;
-	if (stack == 'A')
-	{
-		stx->sts.val = rb_get(stx->rb_a, index);
-		stx_ops_push_from(stx, 'A');
-		stx_ops_push_to(stx, 'B');
-		return ;
-	}
-	stx->sts.val = rb_get(stx->rb_b, index);
-	stx_ops_push_from(stx, 'B');
-	stx_ops_push_to(stx, 'A');
-}
+// //gets ops from index
+// static void	stx_ops_index(t_stacks *stx, size_t index, char stack)
+// {
+// 	stx->sts.index = index;
+// 	if (stack == 'A')
+// 	{
+// 		stx->sts.val = rb_get(stx->rb_a, index);
+// 		stx_ops_push_from(stx, 'A');
+// 		stx_ops_push_to(stx, 'B');
+// 		return ;
+// 	}
+// 	stx->sts.val = rb_get(stx->rb_b, index);
+// 	stx_ops_push_from(stx, 'B');
+// 	stx_ops_push_to(stx, 'A');
+// }

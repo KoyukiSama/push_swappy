@@ -28,8 +28,9 @@ SRC			:= push_swap_manage.c \
 				push_swap_sort.c \
 				push_swap_sort3.c \
 				push_swap_sort_bounds.c \
+				push_swap_sort_insertion_dump.c \
 				push_swap_sort_finish.c \
-				push_swap_sort_init_pushvals.c \
+				push_swap_sort_init_insertion_point.c \
 				push_swap_sort_ops_do.c \
 				push_swap_sort_ops_lowest.c \
 				push_swap_sort_ops_lowest2.c \

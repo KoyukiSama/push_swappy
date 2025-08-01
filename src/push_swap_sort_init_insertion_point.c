@@ -6,25 +6,22 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/31 18:11:39 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/01 23:53:42 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 static void	set_a_insertion_point(t_stacks *stx);
 static void	set_b_insertion_point(t_stacks *stx);
+static void push_b_insertion_point(t_stacks *stx);
 
 void	stx_init_push_to_b(t_stacks *stx)
 {
-	int		curr_top;
-
-	while ()
-	{
-		curr_top = rb_get_top(stx->rb_a);
-		one_b_push(stx, curr_top);
-		
-	}
+	set_a_insertion_point(stx);
+	set_b_insertion_point(stx);
+	push_b_insertion_point(stx);
 }
 
 static void	set_a_insertion_point(t_stacks *stx)
@@ -75,5 +72,24 @@ static void	set_b_insertion_point(t_stacks *stx)
 // push b insertion point to b
 static void push_b_insertion_point(t_stacks *stx)
 {
-
+	stx->sts.val = stx->b_max;
+	stx->sts.index = rb_get_index(stx->rb_a, stx->sts.val);
+	stx_ops_push_from(stx, 'A');
+	if (ft_abs(stx->sts.ops_a_pos) < ft_abs(stx->sts.ops_a_neg))
+	{
+		while (stx->sts.ops_a_pos)
+		{
+			stx_pb(stx);
+			stx->sts.ops_a_pos--;
+		}
+	}
+	else
+	{
+		while (stx->sts.ops_a_neg)
+		{
+			stx_rra(stx);
+			stx->sts.ops_a_neg++;
+		}
+	}
+	stx_pb(stx);
 }
