@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/13 17:36:39 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/08/01 23:43:06 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/02 01:05:59 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define ERR_SML_STR_IS_VALID 22
 # define ERR_SML_STR_FILL_STX 23
 # define ERR_NO_DUPES 24
+
+// best.ops.limit
+# define BEST_OPS_LIMIT 999999999999999999;
 
 typedef	struct s_best
 {
@@ -95,6 +98,7 @@ void		stx_check_ordered(t_stacks stx);
 
 // stx sort
 void		stx_sort(t_stacks *stx);
+t_best		stx_best_a_dump(t_stacks *stx, t_best best, int *found);
 void		stx_sort_3(t_stacks *stx);
 
 // searches for bounds of stack A and B
@@ -104,7 +108,7 @@ void		stx_ops_push_to(t_stacks *stx, char stack);
 void		stx_ops_push_from(t_stacks *stx, char stack);
 
 // gets total operations
-size_t		stx_do_ops(t_stacks *stx, t_best best);
+size_t		stx_ops_do(t_stacks *stx, t_best best);
 
 // init stack
 void		stx_init_push_to_b(t_stacks *stx);

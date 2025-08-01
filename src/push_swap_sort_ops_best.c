@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_sort_ops_lowest.c                        :+:    :+:            */
+/*   push_swap_sort_ops_best.c                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/27 18:02:31 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/02 01:00:03 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static t_best	best_sts_init(t_sts sts);
 static t_best	calc_best(t_best best_sts);
 
-// calculates best stx operations
+// calculates best stx operations , stack -> stack_push_from
 t_best	stx_ops_best(t_sts sts, char stack)
 {
 	t_best	best_sts;

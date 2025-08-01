@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/07/29 18:20:10 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/02 00:57:15 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	stx_do_ops_a(t_stacks *stx, t_best best);
 static void	stx_do_ops_b(t_stacks *stx, t_best best);
 
 // returns ops
-size_t	stx_do_ops(t_stacks *stx, t_best best)
+size_t	stx_ops_do(t_stacks *stx, t_best best)
 {
 	stx_do_ops_double(stx, best);
 	stx_do_ops_a(stx, best);

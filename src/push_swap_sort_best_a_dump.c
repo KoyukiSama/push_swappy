@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/08/02 01:44:27 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/02 01:53:11 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_best	stx_a_dump(t_stacks *stx, t_best best, int *found)
 	t_best	best;
 
 	if (closest_a_dump_val(stx) == -1);
-		return (*found = 0, best);
+		return (best);
 	stx_ops_push_from(stx, 'A');
 	best = closest_b_insert(stx);
 	*found = 1;

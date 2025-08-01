@@ -6,7 +6,7 @@
 /*   By: kclaes <kclaes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/22 19:04:58 by kclaes        #+#    #+#                 */
-/*   Updated: 2025/08/01 23:53:42 by kclaes        ########   odam.nl         */
+/*   Updated: 2025/08/02 00:29:52 by kclaes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 
 static void	set_a_insertion_point(t_stacks *stx);
-static void	set_b_insertion_point(t_stacks *stx);
+static int	set_b_insertion_point(t_stacks *stx);
 static void push_b_insertion_point(t_stacks *stx);
 
 void	stx_init_push_to_b(t_stacks *stx)
@@ -42,31 +42,27 @@ static void	set_a_insertion_point(t_stacks *stx)
 	}
 }
 
-static void	set_b_insertion_point(t_stacks *stx)
+// DNC about the return value, norm be like
+static int	set_b_insertion_point(t_stacks *stx)
 {
 	size_t	i;
 	size_t	len;
 	int		curr_val;
 
 	i = 0;
-	len = stx->rb_a.count;
+	len = stx->rb_a.count - 1;
 	while (i < len)
 	{
 		curr_val = rb_get(stx->rb_a, len);
 		if (is_b_bounds(stx, curr_val))
-		{
-			stx->b_min = curr_val;
-			stx->b_max = curr_val;
-		}
+			return (stx->b_min = curr_val, stx->b_max = curr_val);
 		curr_val = rb_get(stx->rb_a, i);
 		if (is_b_bounds(stx, curr_val))
-		{
-			stx->b_min = curr_val;
-			stx->b_max = curr_val;
-		}
+			return (stx->b_min = curr_val, stx->b_max = curr_val);
 		i++;
 		len--;
 	}
+	return (0);
 }
 
 // push b insertion point to b
